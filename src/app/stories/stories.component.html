@@ -6,6 +6,9 @@
   </mat-form-field>
 		<hr>
 </div>
+<div *ngIf="!data.name">
+	<p><i>The story name is needed to create the sory in the backend.</i></p>
+</div>
 <div *ngIf="data.name">
 
 	<h3>Story Header:</h3>
