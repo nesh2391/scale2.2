@@ -11,53 +11,97 @@
 </div>
 <div *ngIf="data.name">
 
-	<h3>Story Header:</h3>
-	<p><i>The criteria for the developer to sign-off. A Non development sotry dosent hade a Definition of done.</i>
-	</p>
-	<section class="example-section">
-		<mat-checkbox [(ngModel)]="nonDevelopmentStory" class="example-margin">Non Development Story</mat-checkbox>
-	</section>
-	<mat-form-field hintLabel="Max 500 characters" appearance="fill" class="form-indent">
-		<mat-label>Definition of Done </mat-label>
-		<textarea  [disabled]="nonDevelopmentStory" [maxLength]="500" matInput></textarea>
-	</mat-form-field>
+	<button mat-raised-button (click)="pannelSelect=1">Details</button>
+	<button mat-raised-button (click)="pannelSelect=2">Tasks</button>
+	<button mat-raised-button (click)="pannelSelect=3" >History</button>
 
-	<mat-form-field hintLabel="Select 1 of 8 states for the story" appearance="fill" class="form-indent">
-		<mat-label>Select State</mat-label>
-		<mat-select [(ngModel)]="state">
-			<mat-option value=1>1. Product Backloged/Placeholder</mat-option>
-			<mat-option value=2>2. Product Backloged/Defined</mat-option>
-			<mat-option value=3>3. Spring Backlog/Pulled In</mat-option>
-			<mat-option value=4>4. Spring Backlog/Worked On</mat-option>
-			<mat-option value=5>5. Spring Backlog/Ready To Test</mat-option>
-			<mat-option value=6>6. Spring Backlog/Testing</mat-option>
-			<mat-option value=7>7. Accepted/Pending Release</mat-option>
-			<mat-option value=8>8. Accepted/Released</mat-option>
-			<mat-option value=9>9. Accepted/Enabler</mat-option>
-		</mat-select>
-	</mat-form-field>
-	{{state}}
-	<section class="example-section">
-		<mat-checkbox [disabled]="!(state>5)" class="example-margin">Acceptance Criteria Met</mat-checkbox>
-	</section>
-	<p><i>Acceptance criteria can only be assigned if the story is in Spring Backlog/Testing or Accepted/*</i></p>
-	<section class="example-section">
-		<mat-checkbox class="example-margin" [(ngModel)]="ticketchecked"> Ticket Story</mat-checkbox>
-	</section>
-	<p>Associated Ticket Details:</p>
-	<mat-form-field appearance="fill" class="form-indent">
-		<mat-label>Input</mat-label>
-		<input  [disabled]="!ticketchecked" matInput>
+
+	<hr />
+	<div *ngIf="pannelSelect==1">
+
+		<h3>Story Header:</h3>
+		<p><i>The criteria for the developer to sign-off. A Non development sotry dosent hade a Definition of done.</i>
+		</p>
+
+		<mat-form-field hintLabel="Max 500 characters" appearance="fill" class="form-indent">
+			<mat-label>Definition of Done </mat-label>
+			<textarea  [(ngModel)]="data.definitionOfDone" [disabled]="data.nonDevelopmentStory" [maxLength]="500" matInput></textarea>
+		</mat-form-field>
+		<section class="example-section">
+			<mat-checkbox [(ngModel)]="data.nonDevelopmentStory" class="example-margin">Non Development Story
+			</mat-checkbox>
+		</section>
+		<br>
+		<p>Feature Name:</p>
+		<mat-form-field>
+			<input matInput [(ngModel)]="data.featureName">
+  </mat-form-field>
+			<p>Component Name:</p>
+			<mat-form-field>
+				<input matInput [(ngModel)]="data.componentName">
+  </mat-form-field>
+				<br>
+				<p>Assign To:</p>
+				<mat-form-field>
+					<input matInput [(ngModel)]="data.assignedTo">
+  </mat-form-field>
+					<br/>
+					<p>State: </p>
+					<mat-form-field hintLabel="Select 1 of 8 states for the story" appearance="fill"
+						class="form-indent">
+						<mat-label>Select State</mat-label>
+						<mat-select [(ngModel)]="data.state">
+							<mat-option value=1>1. Product Backloged/Placeholder</mat-option>
+							<mat-option value=2>2. Product Backloged/Defined</mat-option>
+							<mat-option value=3>3. Spring Backlog/Pulled In</mat-option>
+							<mat-option value=4>4. Spring Backlog/Worked On</mat-option>
+							<mat-option value=5>5. Spring Backlog/Ready To Test</mat-option>
+							<mat-option value=6>6. Spring Backlog/Testing</mat-option>
+							<mat-option value=7>7. Accepted/Pending Release</mat-option>
+							<mat-option value=8>8. Accepted/Released</mat-option>
+							<mat-option value=9>9. Accepted/Enabler</mat-option>
+						</mat-select>
+					</mat-form-field>
+					{{state}}
+					<section class="example-section">
+						<mat-checkbox [disabled]="!(data.state>5)" class="example-margin">Acceptance Criteria Met
+						</mat-checkbox>
+					</section>
+					<p><i>Acceptance criteria can only be assigned if the story is in Spring Backlog/Testing or Accepted/*</i>
+					</p>
+					<section class="example-section">
+						<mat-checkbox class="example-margin" [(ngModel)]="data.ticketChecked"> Ticket Story
+						</mat-checkbox>
+					</section>
+					<p>Associated Ticket Details:</p>
+					<mat-form-field appearance="fill" class="form-indent">
+						<mat-label>Input</mat-label>
+						<input  [(ngModel)]="data.ticketDetails" [disabled]="!data.ticketChecked" matInput>
 </mat-form-field>
-		<hr>
-		<h3>Story Body:</h3>
-		<p>Enter Story details:</p>
-		<quill-editor (onEditorCreated)="getEditorInstance($event)"></quill-editor>
-		<input type="file" style="display: none" id="fileInputField"/>
-		<hr>
-		<h3>Submit</h3>
+						<hr>
+						<h3>Story Body:</h3>
+						<p>Enter Story details:</p>
+						<quill-editor (onEditorCreated)="getEditorInstance($event)"></quill-editor>
+						<input type="file" style="display: none" id="fileInputField"/>
+						<hr>
+						<h3>Submit</h3>
 
-		<div mat-dialog-actions>
-			<button mat-raised-button [mat-dialog-close]="data.name" cdkFocusInitial>Create Story -></button>
-		</div>
+						<div mat-dialog-actions>
+							<button mat-raised-button [mat-dialog-close]="data" cdkFocusInitial>Create Story -></button>
+						</div>
+
+
+	</div>
+	<div *ngIf="pannelSelect==2">
+		<p>Tasks:</p>
+	</div>
+
+	<div *ngIf="pannelSelect==3">
+		<p>History:</p>
+	</div>
+
+
+
+
+
 </div>

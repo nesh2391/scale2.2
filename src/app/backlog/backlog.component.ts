@@ -16,16 +16,16 @@ export class BacklogComponent implements OnInit {
   name: string;
   constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  openDialog(dataval: StoriesComponent): void {
     const dialogRef = this.dialog.open(StoriesComponent, {
       height: "600px",
       width: "800px",
-      data: { name: this.name }
+      data: dataval ? dataval : {}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed", result);
-      this.name = result;
+      //this.name = result;
     });
   }
   ngOnInit() {}

@@ -14,13 +14,16 @@ import { QuillModule } from "ngx-quill";
 })
 export class StoriesComponent implements OnInit {
   quillEditorRef;
+  pannelSelect: number = 1;
   maxUploadFileSize = 1000000;
   constructor(
     public dialogRef: MatDialogRef<StoriesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: StoriesPopUpData
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log("Data.name: ", this.data.name);
+  }
   onNoClick(): void {
     this.dialogRef.close();
   }

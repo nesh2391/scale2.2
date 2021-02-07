@@ -1,15 +1,14 @@
-<p>
-	backlog works!
-</p>
-
-<button mat-raised-button  (click)="openDialog()">Create Story</button>
-
+<button mat-raised-button  (click)="openDialog(null)">Create Story</button>
+<hr />
+<h1>Refinement:</h1>
 <div cdkDropListGroup>
 	<div class="example-container">
 		<h2>Backlogged</h2>
 
 		<div cdkDropList [cdkDropListData]="backlogged" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of backlogged" cdkDrag>{{item}}</div>
+			<div class="example-box" *ngFor="let item of backlogged" cdkDrag>
+				<div (click)="openDialog({name:item})">{{item}}</div>
+			</div>
 		</div>
 	</div>
 
@@ -18,7 +17,9 @@
 		<h2>In Progress</h2>
 
 		<div cdkDropList [cdkDropListData]="inProgress" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+			<div class="example-box" *ngFor="let item of inProgress" cdkDrag>
+				<div (click)="openDialog({name:item})">{{item}}</div>
+			</div>
 		</div>
 	</div>
 
@@ -26,7 +27,10 @@
 		<h2>Archived</h2>
 
 		<div cdkDropList [cdkDropListData]="archived" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of archived" cdkDrag>{{item}}</div>
+			<div class="example-box" *ngFor="let item of archived" cdkDrag>
+
+				<div (click)="openDialog({name:item})">{{item}}</div>
+			</div>
 		</div>
 	</div>
 
