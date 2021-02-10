@@ -14,13 +14,15 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
 
 import { QuillModule } from "ngx-quill";
+import { ReleasesComponent } from './releases/releases.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     StoriesComponent,
     BacklogComponent,
-    HomeComponent
+    HomeComponent,
+    ReleasesComponent
   ],
   imports: [
     BrowserModule,
