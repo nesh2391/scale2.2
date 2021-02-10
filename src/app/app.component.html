@@ -1,18 +1,32 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <mat-toolbar color="primary">
 	<mat-toolbar-row>
-		<button mat-icon-button>
-      <mat-icon (click)="sidenav.toggle()">menu</mat-icon>
-    </button>
-		<h1>Scaleistical</h1>
+		<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+		<mat-menu #menu="matMenu">
+			<button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+			<button mat-menu-item disabled>
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+			<button mat-menu-item>
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+		</mat-menu>
+		<h1> <a mat-button [routerLink]="'/home'">Scaleistical</a></h1>
 		<span class="menu-spacer"></span>
 		<div>
-			<a mat-button [routerLink]="'/accounts'"> Accounts </a>
-			<a mat-button [routerLink]="'/create-account'"> Create Account </a>
-			<a mat-button [routerLink]="'/contacts'"> Contacts </a>
+			<a mat-button [routerLink]="'/accounts'"> Processes </a>
+			<a mat-button [routerLink]="'/account'"> Account </a>
+			<!-- <a mat-button [routerLink]="'/contacts'"> Contacts </a>
 			<a mat-button [routerLink]="'/create-contact'"> Create Contact </a>
 			<a mat-button [routerLink]="'/activities'"> Activities </a>
-			<a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
+			<a mat-button [routerLink]="'/create-activity'"> Create Activity </a> -->
 
 		</div>
 	</mat-toolbar-row>
