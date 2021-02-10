@@ -14,10 +14,11 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
 
 import { QuillModule } from "ngx-quill";
-import { ReleasesComponent } from './releases/releases.component';
-import { AccountComponent } from './account/account.component';
-import { ProcessesComponent } from './processes/processes.component';
+import { ReleasesComponent } from "./releases/releases.component";
+import { AccountComponent } from "./account/account.component";
+import { ProcessesComponent } from "./processes/processes.component";
 
+import { FlexLayoutModule } from "@angular/flex-layout";
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +31,7 @@ import { ProcessesComponent } from './processes/processes.component';
   ],
   imports: [
     BrowserModule,
+    FlexLayoutModule,
     DemoMaterialModule,
     AppRoutingModule,
     FormsModule,
