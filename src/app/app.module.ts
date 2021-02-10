@@ -16,6 +16,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
 import { QuillModule } from "ngx-quill";
 import { ReleasesComponent } from './releases/releases.component';
 import { AccountComponent } from './account/account.component';
+import { ProcessesComponent } from './processes/processes.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AccountComponent } from './account/account.component';
     BacklogComponent,
     HomeComponent,
     ReleasesComponent,
-    AccountComponent
+    AccountComponent,
+    ProcessesComponent
   ],
   imports: [
     BrowserModule,
