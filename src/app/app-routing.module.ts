@@ -8,6 +8,7 @@ import { HomeComponent } from "./home/home.component";
 import { AccountComponent } from "./account/account.component";
 import { ProcessesComponent } from "./processes/processes.component";
 import { ReleasesComponent } from "./releases/releases.component";
+import { SprintComponent } from "./sprint/sprint.component";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: "process", component: ProcessesComponent },
   { path: "backlog", component: BacklogComponent },
   { path: "release", component: ReleasesComponent },
+  { path: "sprint", component: SprintComponent },
   { path: "account", component: AccountComponent }
 ];
 
