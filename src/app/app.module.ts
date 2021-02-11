@@ -19,6 +19,7 @@ import { AccountComponent } from "./account/account.component";
 import { ProcessesComponent } from "./processes/processes.component";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { SprintComponent } from './sprint/sprint.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     HomeComponent,
     ReleasesComponent,
     AccountComponent,
-    ProcessesComponent
+    ProcessesComponent,
+    SprintComponent
   ],
   imports: [
     BrowserModule,
