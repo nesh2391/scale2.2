@@ -19,7 +19,8 @@ import { AccountComponent } from "./account/account.component";
 import { ProcessesComponent } from "./processes/processes.component";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { SprintComponent } from './sprint/sprint.component';
+import { SprintComponent } from "./sprint/sprint.component";
+import { GuideModule } from "./guide/guide.module.ts";
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,6 +38,7 @@ import { SprintComponent } from './sprint/sprint.component';
     DemoMaterialModule,
     AppRoutingModule,
     FormsModule,
+    GuideModule,
     BrowserAnimationsModule,
     QuillModule.forRoot()
   ],

@@ -17,7 +17,8 @@ const routes: Routes = [
   { path: "backlog", component: BacklogComponent },
   { path: "release", component: ReleasesComponent },
   { path: "sprint", component: SprintComponent },
-  { path: "account", component: AccountComponent }
+  { path: "account", component: AccountComponent },
+  { path: "guide", loadChildren: "./guide/guide.module.ts" }
 ];
 
 @NgModule({
