@@ -1,8 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { StoriesexplanationComponent } from "./storiesexplanation/storiesexplanation.component.ts";
-import { ProcessexplanationComponent } from "./processexplanation/processexplanation.component.ts";
-import { GuideexplanationComponent } from "./guideexplanation/guideexplanation.component.ts";
+import { StoriesexplanationComponent } from "./storiesexplanation/storiesexplanation.component";
+import { ProcessexplanationComponent } from "./processexplanation/processexplanation.component";
+import { GuideexplanationComponent } from "./guideexplanation/guideexplanation.component";
 
 const aboutRoutes: Routes = [
   { path: "stories", component: StoriesexplanationComponent },

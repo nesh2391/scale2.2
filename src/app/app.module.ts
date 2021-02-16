@@ -20,7 +20,7 @@ import { ProcessesComponent } from "./processes/processes.component";
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SprintComponent } from "./sprint/sprint.component";
-import { GuideModule } from "./guide/guide.module.ts";
+import { GuideModule } from "./guide/guide.module";
 @NgModule({
   declarations: [
     AppComponent,
