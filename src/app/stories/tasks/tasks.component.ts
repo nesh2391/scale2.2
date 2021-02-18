@@ -25,6 +25,6 @@ export class TasksComponent implements OnInit {
   ];
 
   dataSource = new MatTableDataSource(this.dataSourceMock);
-  displayedColumns: string[] = ["id", "name", "toDo", "estimate"];
+  displayedColumns: string[] = ["id", "name", "toDo", "estimate", "actions"];
   ngOnInit() {}
 }
