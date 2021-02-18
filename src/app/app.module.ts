@@ -21,6 +21,7 @@ import { ProcessesComponent } from "./processes/processes.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SprintComponent } from "./sprint/sprint.component";
 import { GuideModule } from "./guide/guide.module";
+import { TasksComponent } from './stories/tasks/tasks.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { GuideModule } from "./guide/guide.module";
     ReleasesComponent,
     AccountComponent,
     ProcessesComponent,
-    SprintComponent
+    SprintComponent,
+    TasksComponent
   ],
   imports: [
     BrowserModule,
