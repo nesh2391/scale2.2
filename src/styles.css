@@ -15,3 +15,6 @@ body {
   float: right;
   margin: 8px;
 }
+.ql-container {
+  height: 150px;
+}
