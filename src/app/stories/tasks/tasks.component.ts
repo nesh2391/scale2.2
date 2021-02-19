@@ -19,7 +19,12 @@ export class TasksComponent implements OnInit {
   dataSourceMock: tasks[] = [
     { id: 1, name: "task 1", toDo: 1, estimate: 2 },
     { id: 2, name: "task 2", toDo: 1, estimate: 2 },
-    { id: 3, name: "task 3", toDo: 1, estimate: 2 },
+    // {
+    //   id: 3,
+    //   name: "this is a lot of test designed to thest the table",
+    //   toDo: 1,
+    //   estimate: 2
+    // },
     { id: 4, name: "task 4", toDo: 1, estimate: 2 },
     { id: 5, name: "task 5", toDo: 1, estimate: 2 }
   ];

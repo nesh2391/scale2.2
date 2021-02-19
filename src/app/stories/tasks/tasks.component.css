@@ -6,3 +6,34 @@ table {
   font-size: 14px;
   width: 100%;
 }
+/* .mat-column-id {
+  flex: 0 0 5% !important;
+}
+.mat-column-name {
+  flex: 0 0 50% !important;
+}
+.mat-column-toDo {
+  flex: 0 0 5% !important;
+}
+.mat-column-estimate {
+  flex: 0 0 5% !important;
+}
+.mat-column-actions {
+  flex: 0 0 35% !important;
+} */
+.w-75 {
+  width: 5%;
+  text-overflow: ellipsis;
+}
+
+.w-100 {
+  width: 50%;
+  text-overflow: ellipsis;
+}
+.f-35 {
+  width: 35%;
+  text-overflow: ellipsis;
+}
+/* .mat-header-cell {
+  background-color: red;
+} */
