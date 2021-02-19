@@ -21,7 +21,8 @@ export class TasksComponent implements OnInit {
     { id: 2, name: "task 2", toDo: 1, estimate: 2 },
     {
       id: 3,
-      name: "this is a lot od text designed to test the table's ability to wrap text",
+      name:
+        "this is a lot od text designed to test the table's ability to wrap text",
       toDo: 1,
       estimate: 2
     },
