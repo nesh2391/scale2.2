@@ -21,19 +21,26 @@ table {
 .mat-column-actions {
   flex: 0 0 35% !important;
 } */
+table {
+  width: 100%;
+  table-layout: fixed;
+}
 .w-75 {
-  width: 5%;
-  text-overflow: ellipsis;
+  /* width: 5%; */
+  /* text-overflow: ellipsis; */
+  flex: 0 0 5% !important;
 }
 
 .w-100 {
-  width: 50%;
+  /* width: 50%; */
+  /* flex: 0 0 50% !important; */
   text-overflow: ellipsis;
 }
 .f-35 {
-  width: 35%;
-  text-overflow: ellipsis;
+  flex: 0 0 35% !important;
 }
-/* .mat-header-cell {
-  background-color: red;
-} */
+th,
+td {
+  width: auto;
+  overflow-wrap: break-word;
+}
