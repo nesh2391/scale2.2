@@ -9,6 +9,46 @@
   3. callbacks for actions, done and edit
   4. In place editing
   -->
+<div class="AddTaskButton" *ngIf="!addTaskInPlaceEdit">
+	<button (click)="addTaskInPlaceEdit=true" mat-mini-fab color="primary" aria-label="add tasks">
+          <mat-icon >add</mat-icon>
+        </button>
+</div>
+<div *ngIf="addTaskInPlaceEdit">
+	<h4>Enter task Details</h4>
+	<div class="imput-form-allignment-float">
+		<mat-form-field class="name-form-field">
+			<mat-label>Name:</mat-label>
+			<input matInput type="text" [(ngModel)]="inputName">
+    </mat-form-field>
+			<mat-form-field class="number-form-field">
+				<mat-label>To Do.</mat-label>
+				<input matInput type="number" [(ngModel)]="inputToDo">
+    </mat-form-field>
+				<mat-form-field class="number-form-field">
+					<mat-label>Estimate</mat-label>
+					<input matInput type="number" [(ngModel)]="inputEstimate">
+    </mat-form-field>
+	</div>
+	<!-- <label for="name">Task Name</label>
+		<input [(ngModel)]="inputName" id="name" type="text"> -->
+	<!-- <label for="toDo">To Do.</label>
+				<input [(ngModel)]="inputToDo" id="toDo" type="number"> -->
+	<!-- <label for="estimate" >Estimate</label>
+				<input [(ngModel)]="inputEstimate" type="number" id="estimate"> -->
+	<br>
+	<div class="AddTaskButton">
+		<button (click)="addTaskInPlaceEdit=false" mat-mini-fab color="primary" aria-label="add tasks">
+          <mat-icon >done</mat-icon>
+    </button>
+		<button (click)="addTaskInPlaceEdit=false" mat-mini-fab color="primary" aria-label="add tasks">
+          <mat-icon >close</mat-icon>
+    </button>
+	</div>
+</div>
+<br>
+<br>
+<br>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
 	<!-- Id Column -->

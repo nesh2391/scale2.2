@@ -34,3 +34,17 @@ td {
   width: auto;
   overflow-wrap: break-word;
 }
+.AddTaskButton {
+  float: right;
+}
+.imput-form-allignment-float {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.name-form-field {
+  flex-basis: 50%;
+}
+.number-form-field {
+  flex-basis: 25%;
+}
