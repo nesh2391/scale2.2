@@ -7,4 +7,6 @@ export interface StoriesPopUpData {
   state: number;
   ticketChecked: boolean;
   ticketDetails: string;
+  assignedTo: string;
+  sprintId: number;
 }
