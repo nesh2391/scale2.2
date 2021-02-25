@@ -30,12 +30,6 @@
 					<input matInput type="number" [(ngModel)]="inputEstimate">
     </mat-form-field>
 	</div>
-	<!-- <label for="name">Task Name</label>
-		<input [(ngModel)]="inputName" id="name" type="text"> -->
-	<!-- <label for="toDo">To Do.</label>
-				<input [(ngModel)]="inputToDo" id="toDo" type="number"> -->
-	<!-- <label for="estimate" >Estimate</label>
-				<input [(ngModel)]="inputEstimate" type="number" id="estimate"> -->
 	<br>
 	<div class="AddTaskButton">
 		<button (click)="addTaskInPlaceEdit=false" mat-mini-fab color="primary" aria-label="add tasks">
@@ -53,26 +47,31 @@
 
 	<!-- Id Column -->
 	<ng-container matColumnDef="id">
-		<th mat-header-cell class="w-75" *matHeaderCellDef>Id.</th>
+		<th mat-header-cell class="f-10" [class.blue-background]="level=='primary'"
+			[class.grey-background]="level!='primary'" *matHeaderCellDef>Id.</th>
 		<td mat-cell *matCellDef="let element"> {{element.id}} </td>
 	</ng-container>
 	<!-- Name Column -->
 	<ng-container matColumnDef="name">
-		<th mat-header-cell class="w-100" *matHeaderCellDef> Name </th>
+		<th mat-header-cell class="f-35" [class.blue-background]="level=='primary'"
+			[class.grey-background]="level!='primary'" *matHeaderCellDef> Name </th>
 		<td mat-cell *matCellDef="let element"> {{element.name}} </td>
 	</ng-container>
 	<!-- To Do Column -->
 	<ng-container matColumnDef="toDo">
-		<th mat-header-cell class="w-75" *matHeaderCellDef> To Do </th>
+		<th mat-header-cell class="f-10" [class.blue-background]="level=='primary'"
+			[class.grey-background]="level!='primary'" *matHeaderCellDef> To Do </th>
 		<td mat-cell *matCellDef="let element"> {{element.toDo}} </td>
 	</ng-container>
 	<!-- Estimate Column -->
 	<ng-container matColumnDef="estimate">
-		<th mat-header-cell class="w-75" [style.background-color]="red" *matHeaderCellDef> To Do </th>
+		<th mat-header-cell class="f-10" [class.blue-background]="level=='primary'"
+			[class.grey-background]="level!='primary'" *matHeaderCellDef> To Do </th>
 		<td mat-cell *matCellDef="let element"> {{element.estimate}} </td>
 	</ng-container>
 	<ng-container matColumnDef="actions">
-		<th mat-header-cell class="f-35" *matHeaderCellDef> Actions </th>
+		<th mat-header-cell class="f-35" [class.blue-background]="level=='primary'"
+			[class.grey-background]="level!='primary'" *matHeaderCellDef> Actions </th>
 		<td mat-cell *matCellDef="let element">
 			<button md-raised-button >Edit</button>
 		</td>

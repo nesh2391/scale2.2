@@ -5,7 +5,7 @@ import {
   transition,
   trigger
 } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { StoriesPopUpData } from "../general-interfaces/StoriesDialogData";
 
 @Component({
@@ -26,6 +26,7 @@ import { StoriesPopUpData } from "../general-interfaces/StoriesDialogData";
 export class StoriesTableComponent implements OnInit {
   constructor() {}
 
+  @Input() level: string;
   mockData: StoriesPopUpData[] = [
     {
       name: "story-test-1",

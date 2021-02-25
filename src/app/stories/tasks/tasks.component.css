@@ -10,25 +10,6 @@ table {
   width: 100%;
   table-layout: fixed;
 }
-.w-75 {
-  /* width: 5%; */
-  /* text-overflow: ellipsis; */
-  flex: 0 0 5% !important;
-  background-color: #3f51b5;
-  color: white;
-}
-.w-100 {
-  /* width: 50%; */
-  /* flex: 0 0 50% !important; */
-  text-overflow: ellipsis;
-  background-color: #3f51b5;
-  color: white;
-}
-.f-35 {
-  flex: 0 0 35% !important;
-  background-color: #3f51b5;
-  color: white;
-}
 th,
 td {
   width: auto;
@@ -47,4 +28,30 @@ td {
 }
 .number-form-field {
   flex-basis: 25%;
+}
+.f-10 {
+  /* width: 5%; */
+  /* text-overflow: ellipsis; */
+  flex: 0 0 10% !important;
+}
+.f-80 {
+  /* width: 50%; */
+  flex: 0 0 80% !important;
+  text-overflow: ellipsis;
+}
+.f-75 {
+  /* width: 50%; */
+  flex: 0 0 75% !important;
+  text-overflow: ellipsis;
+}
+.f-35 {
+  flex: 0 0 35% !important;
+}
+.blue-background {
+  background-color: #3f51b5;
+  color: white;
+}
+.grey-background {
+  background-color: lightgrey;
+  color: black;
 }

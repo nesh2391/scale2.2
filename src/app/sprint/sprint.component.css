@@ -38,6 +38,7 @@ tr.sprint-element-row:not(.sprint-expanded-row):active {
 .sprint-element-detail {
   overflow: hidden;
   display: flex;
+  background-color: lightgray;
 }
 
 /* tr.example-detail-row {

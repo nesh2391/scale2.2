@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { MatTableDataSource } from "@angular/material/table";
 
 export interface tasks {
@@ -14,7 +14,10 @@ export interface tasks {
   styleUrls: ["./tasks.component.css"]
 })
 export class TasksComponent implements OnInit {
-  constructor() {}
+  @Input() level: string;
+  constructor() {
+    console.log("Level", this.level);
+  }
 
   dataSourceMock: tasks[] = [
     { id: 1, name: "task 1", toDo: 1, estimate: 2 },
