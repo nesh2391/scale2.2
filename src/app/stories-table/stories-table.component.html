@@ -14,15 +14,22 @@
 	<!-- To Do Column -->
 	<ng-container matColumnDef="assignedTo">
 		<th mat-header-cell class="f-10" [class.blue-background]="level=='primary'"
-			[class.grey-background]="level!='primary'" *matHeaderCellDef> Sddigned To </th>
+			[class.grey-background]="level!='primary'" *matHeaderCellDef> Assigned To </th>
 		<td mat-cell *matCellDef="let element"> {{element.assignedTo}} </td>
 	</ng-container>
 
 	<ng-container matColumnDef="expandedDetailStoriesTable">
 		<td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
 			<div class="stories-element-detail" [@detailExpandStories]="element['expanded'] ? 'expanded' : 'collapsed'">
+
 				<div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
-				<app-tasks></app-tasks>
+				<div>
+					Ticked Checked: {{element.ticketChecked}}<br>
+        Thicket Details: {{element.ticketDetails}}<br>
+        Non Development Story: {{element.nonDevelopmentStory}}<br>
+        Feature Name:{{element.featureName}}<br>
+					<app-tasks></app-tasks>
+				</div>
 			</div>
 		</td>
 	</ng-container>

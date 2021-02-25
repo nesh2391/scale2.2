@@ -15,9 +15,7 @@ export interface tasks {
 })
 export class TasksComponent implements OnInit {
   @Input() level: string;
-  constructor() {
-    console.log("Level", this.level);
-  }
+  constructor() {}
 
   dataSourceMock: tasks[] = [
     { id: 1, name: "task 1", toDo: 1, estimate: 2 },
