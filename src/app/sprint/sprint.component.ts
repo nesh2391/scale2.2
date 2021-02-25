@@ -1,14 +1,33 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
+import { StoriesPopUpData } from "../general-interfaces/StoriesDialogData";
 import { SprintObjectDef } from "./sprint-object-def";
 
 @Component({
   selector: "app-sprint",
   templateUrl: "./sprint.component.html",
-  styleUrls: ["./sprint.component.css"]
+  styleUrls: ["./sprint.component.css"],
+  animations: [
+    trigger("detailExpand", [
+      state("collapsed", style({ height: "0px", minHeight: "0" })),
+      state("expanded", style({ height: "*" })),
+      transition(
+        "expanded <=> collapsed",
+        animate("225ms cubic-bezier(0.4, 0.0, 0.2, 1)")
+      )
+    ])
+  ]
 })
 export class SprintComponent implements OnInit {
   constructor() {}
 
+  expandedStoriesElement: SprintObjectDef | null;
   sampleDate: number = new Date().getDate();
   mockContent: SprintObjectDef[] = [
     {
