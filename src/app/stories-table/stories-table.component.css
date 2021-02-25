@@ -2,3 +2,20 @@ table {
   width: 100%;
   table-layout: fixed;
 }
+tr.stories-detail-row {
+  height: 0;
+}
+tr.stories-element-row:not(.stories-expanded-row):hover {
+  background: whitesmoke;
+}
+tr.stories-element-row:not(.stories-expanded-row):active {
+  background: #efefef;
+}
+.stories-element-row td {
+  border-bottom-width: 0;
+}
+
+.stories-element-detail {
+  overflow: hidden;
+  display: flex;
+}

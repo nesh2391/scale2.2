@@ -1,10 +1,27 @@
+import {
+  animate,
+  state,
+  style,
+  transition,
+  trigger
+} from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { StoriesPopUpData } from "../general-interfaces/StoriesDialogData";
 
 @Component({
   selector: "app-stories-table",
   templateUrl: "./stories-table.component.html",
-  styleUrls: ["./stories-table.component.css"]
+  styleUrls: ["./stories-table.component.css"],
+  animations: [
+    trigger("detailExpandStories", [
+      state("collapsed", style({ height: "0px", minHeight: "0" })),
+      state("expanded", style({ height: "*" })),
+      transition(
+        "expanded <=> collapsed",
+        animate("225ms cubic-bezier(0.4, 0.0, 0.2, 1)")
+      )
+    ])
+  ]
 })
 export class StoriesTableComponent implements OnInit {
   constructor() {}
