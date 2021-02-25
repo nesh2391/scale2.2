@@ -42,10 +42,11 @@ export class StoriesTableComponent implements OnInit {
       assignedTo: "john doe",
       ticketChecked: false,
       ticketDetails: null,
-      itle: null,
+      title: null,
       nonDevelopmentStory: null,
       featureName: null
     }
   ];
   ngOnInit() {}
+  columnsToDisplay = ["name", "state", "assignedTo"];
 }
