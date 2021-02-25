@@ -22,6 +22,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { SprintComponent } from "./sprint/sprint.component";
 import { GuideModule } from "./guide/guide.module";
 import { TasksComponent } from './stories/tasks/tasks.component';
+import { StoriesTableComponent } from './stories-table/stories-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +33,8 @@ import { TasksComponent } from './stories/tasks/tasks.component';
     AccountComponent,
     ProcessesComponent,
     SprintComponent,
-    TasksComponent
+    TasksComponent,
+    StoriesTableComponent
   ],
   imports: [
     BrowserModule,
