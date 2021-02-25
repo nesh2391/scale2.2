@@ -22,22 +22,25 @@ table {
   color: white;
 }
 
-
-
-
-
-tr.parent-element-row:not(.parent-expanded-row):hover {
-  background: whitesmoke;
-}
-tr.child-detail-row {
+tr.sprint-detail-row {
   height: 0;
 }
+tr.sprint-element-row:not(.sprint-expanded-row):hover {
+  background: whitesmoke;
+}
+tr.sprint-element-row:not(.sprint-expanded-row):active {
+  background: #efefef;
+}
+.sprint-element-row td {
+  border-bottom-width: 0;
+}
 
+.sprint-element-detail {
+  overflow: hidden;
+  display: flex;
+}
 
-
-
-
-tr.example-detail-row {
+/* tr.example-detail-row {
   height: 0;
 }
 
@@ -56,4 +59,4 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-detail {
   overflow: hidden;
   display: flex;
-}
+} */
