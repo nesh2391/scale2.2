@@ -5,7 +5,7 @@ import {
   transition,
   trigger
 } from "@angular/animations";
-import { Component, OnInit } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { SprintObjectDef } from "../general-interfaces/sprint-object-def";
 
 @Component({
@@ -27,7 +27,7 @@ export class SprintTableComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-
+  @Input() level: string;
   expandedStoriesElement: SprintObjectDef | null;
   sampleDate: number = new Date().getDate();
   mockContent: SprintObjectDef[] = [
