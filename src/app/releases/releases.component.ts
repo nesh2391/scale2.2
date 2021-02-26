@@ -86,11 +86,10 @@ export class ReleasesComponent implements OnInit {
     }
   ];
 
-
-
-
-
-
-
-  
+  columnsToDisplay = [
+    "releaseId",
+    "releaseName",
+    "releaseStartDate",
+    "releaseEndDate"
+  ];
 }
