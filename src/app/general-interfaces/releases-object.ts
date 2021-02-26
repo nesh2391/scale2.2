@@ -5,5 +5,5 @@ export interface ReleasesObject {
   releaseName: string;
   releaseStartDate: Date;
   releaseEndDate: Date;
-  sprints: SprintObjectDef;
+  sprints: SprintObjectDef[];
 }
