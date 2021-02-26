@@ -24,6 +24,7 @@ import { GuideModule } from "./guide/guide.module";
 import { TasksComponent } from './stories/tasks/tasks.component';
 import { StoriesTableComponent } from './stories-table/stories-table.component';
 import { SprintTableComponent } from './sprint-table/sprint-table.component';
+import { ReleasesTableComponent } from './releases-table/releases-table.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { SprintTableComponent } from './sprint-table/sprint-table.component';
     SprintComponent,
     TasksComponent,
     StoriesTableComponent,
-    SprintTableComponent
+    SprintTableComponent,
+    ReleasesTableComponent
   ],
   imports: [
     BrowserModule,
