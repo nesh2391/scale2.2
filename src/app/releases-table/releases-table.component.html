@@ -1,1 +1,88 @@
-table
+<table
+  mat-table
+  [dataSource]="mockData"
+  multiTemplateDataRows
+  class="mat-elevation-z8"
+>
+  <!-- Id Column -->
+  <ng-container matColumnDef="releaseId">
+    <th
+      mat-header-cell
+      class="f-80"
+      [class.blue-background]="level=='primary'"
+      [class.grey-background]="level!='primary'"
+      *matHeaderCellDef
+    >
+      Release Id.
+    </th>
+    <td mat-cell *matCellDef="let element">{{element.releaseId}}</td>
+  </ng-container>
+  <!-- Name Column -->
+  <ng-container matColumnDef="releaseName">
+    <th
+      mat-header-cell
+      class="f-10"
+      [class.blue-background]="level=='primary'"
+      [class.grey-background]="level!='primary'"
+      *matHeaderCellDef
+    >
+      Release Name
+    </th>
+    <td mat-cell *matCellDef="let element">{{element.releaseName}}</td>
+  </ng-container>
+  <!-- To Do Column -->
+  <ng-container matColumnDef="releaseStartDate">
+    <th
+      mat-header-cell
+      class="f-10"
+      [class.blue-background]="level=='primary'"
+      [class.grey-background]="level!='primary'"
+      *matHeaderCellDef
+    >
+      Start Date
+    </th>
+    <td mat-cell *matCellDef="let element">{{element.releaseStartDate}}</td>
+  </ng-container>
+  <!-- To Do Column -->
+  <ng-container matColumnDef="releaseEndDate">
+    <th
+      mat-header-cell
+      class="f-10"
+      [class.blue-background]="level=='primary'"
+      [class.grey-background]="level!='primary'"
+      *matHeaderCellDef
+    >
+      End Date
+    </th>
+    <td mat-cell *matCellDef="let element">{{element.releaseEndDate}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td
+      mat-cell
+      *matCellDef="let element"
+      [attr.colspan]="columnsToDisplay.length"
+    >
+      <div
+        class="release-element-detail"
+        [@detailExpand]="element['expanded'] ? 'expanded' : 'collapsed'"
+      >
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <app-stories-table level="second"></app-stories-table>
+      </div>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr
+    mat-row
+    *matRowDef="let element; columns: columnsToDisplay;"
+    class="release-element-row"
+    [class.sprint-expanded-row]="element['expanded']"
+    (click)="element['expanded']=element['expanded']==null?true:!element['expanded']"
+  ></tr>
+  <tr
+    mat-row
+    *matRowDef="let row; columns: ['expandedDetail']"
+    class="release-detail-row"
+  ></tr>
+</table>
