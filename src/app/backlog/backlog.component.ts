@@ -6,6 +6,7 @@ import {
   moveItemInArray,
   transferArrayItem
 } from "@angular/cdk/drag-drop";
+import { DefectComponent } from "../defect/defect.component";
 
 @Component({
   selector: "app-backlog",
@@ -24,6 +25,19 @@ export class BacklogComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed", result);
+      //this.name = result;
+    });
+  }
+
+  openDefectDialog(dataval: DefectComponent): void {
+    const dialogDefectRef = this.dialog.open(DefectComponent, {
+      height: "600px",
+      width: "800px",
+      data: dataval ? dataval : {}
+    });
+
+    dialogDefectRef.afterClosed().subscribe(result => {
       console.log("The dialog was closed", result);
       //this.name = result;
     });

@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Story</h1>
+<div mat-dialog-content>
+	<p>Enter Story Name:</p>
+	<mat-form-field>
+		<input matInput [(ngModel)]="defect.name">
+  </mat-form-field>
+		<hr>
+</div>
+<div *ngIf="!defect.name">
+	<p><i>The story name is needed to create the sory in the backend.</i></p>
+</div>
+<div *ngIf="defect.name">
+</div>
