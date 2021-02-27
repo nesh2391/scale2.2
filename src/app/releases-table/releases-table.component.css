@@ -32,7 +32,6 @@ tr.release-element-row:not(.release-expanded-row):active {
 .release-element-detail {
   overflow: hidden;
   display: flex;
-  background-color: lightgray;
 }
 
 .blue-background {
