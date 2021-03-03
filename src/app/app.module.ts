@@ -21,11 +21,11 @@ import { ProcessesComponent } from "./processes/processes.component";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { SprintComponent } from "./sprint/sprint.component";
 import { GuideModule } from "./guide/guide.module";
-import { TasksComponent } from './stories/tasks/tasks.component';
-import { StoriesTableComponent } from './stories-table/stories-table.component';
-import { SprintTableComponent } from './sprint-table/sprint-table.component';
-import { ReleasesTableComponent } from './releases-table/releases-table.component';
-import { DefectComponent } from './defect/defect.component';
+import { TasksComponent } from "./stories/tasks/tasks.component";
+import { StoriesTableComponent } from "./stories-table/stories-table.component";
+import { SprintTableComponent } from "./sprint-table/sprint-table.component";
+import { ReleasesTableComponent } from "./releases-table/releases-table.component";
+import { DefectComponent } from "./defect/defect.component";
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,7 +59,7 @@ import { DefectComponent } from './defect/defect.component';
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [BacklogComponent, StoriesComponent]
+  entryComponents: [BacklogComponent, StoriesComponent, DefectComponent]
 })
 export class AppModule {}
 
