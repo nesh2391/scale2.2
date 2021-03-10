@@ -1,13 +1,18 @@
 <h1 mat-dialog-title>Story</h1>
 <div mat-dialog-content>
-	<p>Enter Story Name:</p>
-	<mat-form-field>
-		<input matInput [(ngModel)]="defect.name">
+  <p>Enter Story Name:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="defect.name">
   </mat-form-field>
-		<hr>
+  <hr>
 </div>
 <div *ngIf="!defect.name">
-	<p><i>The story name is needed to create the sory in the backend.</i></p>
+  <p><i>The story name is needed to create the sory in the backend.</i></p>
 </div>
 <div *ngIf="defect.name">
 </div>
+<h3>Story Body:</h3>
+<p>Enter Story details:</p>
+<quill-editor (onEditorCreated)="getEditorInstance($event)"></quill-editor>
+<input type="file" style="display: none" id="fileInputField"/>
+<hr>
