@@ -1,39 +1,57 @@
-<button mat-raised-button  (click)="openDialog(null)">Story +</button>
-<button mat-raised-button  (click)="openDefectDialog(null)">Defect +</button>
+<button mat-raised-button  (click)="openDialog(null)">
+  <div class="example-element-diagram">
+          <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
+          <div class="example-element-symbol"> US</div>
+          <div class="example-element-name"> User Story </div>
+        </div></button>
+<button mat-raised-button  (click)="openDefectDialog(null)">
+          <div class="example-element-diagram">
+          <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
+          <div class="example-element-symbol"> DE</div>
+          <div class="example-element-name"> Defect </div>
+        </div>
+</button>
+<button mat-raised-button  (click)="openDefectDialog(null)">
+          <div class="example-element-diagram">
+          <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
+          <div class="example-element-symbol"> NT</div>
+          <div class="example-element-name"> Note </div>
+        </div>
+</button>
 <hr />
 <h1>Refinement:</h1>
 <div cdkDropListGroup>
-	<div class="example-container">
-		<h2>Backlogged</h2>
+  <div class="example-container">
+    <h2>Backlogged</h2>
 
-		<div cdkDropList [cdkDropListData]="backlogged" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of backlogged" cdkDrag>
-				<div (click)="openDialog({name:item})">{{item}}</div>
-			</div>
-		</div>
-	</div>
+    <div cdkDropList [cdkDropListData]="backlogged" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of backlogged" cdkDrag>
+        <div (click)="openDialog({name:item})">{{item}}</div>
+      </div>
+    </div>
+  </div>
 
 
-	<div class="example-container">
-		<h2>In Progress</h2>
+  <div class="example-container">
+    <h2>In Progress</h2>
 
-		<div cdkDropList [cdkDropListData]="inProgress" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of inProgress" cdkDrag>
-				<div (click)="openDialog({name:item})">{{item}}</div>
-			</div>
-		</div>
-	</div>
+    <div cdkDropList [cdkDropListData]="inProgress" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
+        <div (click)="openDialog({name:item})">{{item}}</div>
+      </div>
+    </div>
+  </div>
 
-	<div class="example-container">
-		<h2>Archived</h2>
+  <div class="example-container">
+    <h2>Archived</h2>
 
-		<div cdkDropList [cdkDropListData]="archived" class="example-list" (cdkDropListDropped)="drop($event)">
-			<div class="example-box" *ngFor="let item of archived" cdkDrag>
+    <div cdkDropList [cdkDropListData]="archived" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of archived" cdkDrag>
 
-				<div (click)="openDialog({name:item})">{{item}}</div>
-			</div>
-		</div>
-	</div>
+        <div (click)="openDialog({name:item})">{{item}}</div>
+      </div>
+    </div>
+  </div>
 
 
 </div>
