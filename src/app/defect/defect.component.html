@@ -10,9 +10,24 @@
   <p><i>The story name is needed to create the sory in the backend.</i></p>
 </div>
 <div *ngIf="defect.name">
+  <p>Story Name:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="storyName">
+  </mat-form-field>
+  <p>Feature Name:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="featureName">
+  </mat-form-field>
+  <mat-select [(ngModel)]="critical">
+    <mat-option value=1>P1: Blocker</mat-option>
+    <mat-option value=2>P2: Urgent</mat-option>
+    <mat-option value=3>P3: Not Urgent, but needs to be resolved</mat-option>
+    <mat-option value=3>P3: Happens in a known case</mat-option>
+    <mat-option value=1>P4: Cant be resolved</mat-option>
+  </mat-select>
+  <h3>Story Body:</h3>
+  <p>Enter Story details:</p>
+  <quill-editor (onEditorCreated)="getEditorInstance($event)"></quill-editor>
+  <input type="file" style="display: none" id="fileInputField"/>
+  <hr>
 </div>
-<h3>Story Body:</h3>
-<p>Enter Story details:</p>
-<quill-editor (onEditorCreated)="getEditorInstance($event)"></quill-editor>
-<input type="file" style="display: none" id="fileInputField"/>
-<hr>

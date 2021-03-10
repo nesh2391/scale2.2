@@ -13,9 +13,12 @@ import { QuillModule } from "ngx-quill";
   styleUrls: ["./defect.component.css"]
 })
 export class DefectComponent implements OnInit {
-      quillEditorRef;
+  quillEditorRef;
   pannelSelect: number = 1;
   maxUploadFileSize = 1000000;
+  storyName;
+  featureName;
+  critical;
   constructor(
     public dialogRef: MatDialogRef<DefectsObject>,
     @Inject(MAT_DIALOG_DATA) public defect: DefectsObject
@@ -27,7 +30,7 @@ export class DefectComponent implements OnInit {
     this.dialogRef.close();
   }
 
-    getEditorInstance(editorInstance: any) {
+  getEditorInstance(editorInstance: any) {
     this.quillEditorRef = editorInstance;
 
     //Printing here
@@ -36,7 +39,7 @@ export class DefectComponent implements OnInit {
     toolbar.addHandler("image", this.imageHandler);
   }
 
-    imageHandler = (image, callback) => {
+  imageHandler = (image, callback) => {
     const input = <HTMLInputElement>document.getElementById("fileInputField");
     document.getElementById("fileInputField").onchange = () => {
       let file: File;
