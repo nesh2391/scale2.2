@@ -87,3 +87,8 @@
 .float-clear {
   float: clear;
 }
+.banner-roll-elements {
+  width: 98%;
+  background-color: grey;
+  padding: 10px;
+}
