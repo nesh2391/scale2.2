@@ -1,6 +1,6 @@
 .parallax1 {
   /* The image used */
-  background-image: url(https://www.w3schools.com/w3images/parallax1.jpg);
+  background-image: url(https://nesh-revision-2021.s3.amazonaws.com/19870.jpg);
 
   /* Set a specific height */
   min-height: 500px;
@@ -12,7 +12,7 @@
   background-size: cover;
 }
 .white-content {
-  height: 100px;
+  height: 500px;
 }
 .parallax2 {
   /* The image used */
