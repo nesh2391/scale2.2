@@ -1,25 +1,27 @@
 <h1>Scrum Elements:</h1>
 <div class="banner-roll-elements">
-  <button mat-raised-button  (click)="openDialog(null)">
+  <div class="button-flex-arrangement">
+    <button mat-raised-button class="button-margin-10"  (click)="openDialog(null)">
   <div class="example-element-diagram">
           <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
           <div class="example-element-symbol"> US</div>
-          <div class="example-element-name"> User Story </div>
+          <div class="bold-font"> User Story </div>
         </div></button>
-  <button mat-raised-button  (click)="openDefectDialog(null)">
+    <button mat-raised-button class="button-margin-10"  (click)="openDefectDialog(null)">
           <div class="example-element-diagram">
           <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
           <div class="example-element-symbol"> DE</div>
-          <div class="example-element-name"> Defect </div>
+          <div class="bold-font"> Defect </div>
         </div>
 </button>
-  <button mat-raised-button  (click)="openDefectDialog(null)">
+    <button mat-raised-button class="button-margin-10"  (click)="openDefectDialog(null)">
           <div class="example-element-diagram">
           <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
           <div class="example-element-symbol"> NT</div>
-          <div class="example-element-name"> Note </div>
+          <div class="bold-font"> Note </div>
         </div>
 </button>
+  </div>
 </div>
 <hr />
 <h1>Refinement:</h1>
@@ -32,6 +34,8 @@
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>
     </div>
+    <mat-paginator [length]="100" [pageSize]="10">
+    </mat-paginator>
   </div>
 
 
@@ -43,6 +47,8 @@
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>
     </div>
+    <mat-paginator [length]="100" [pageSize]="10">
+    </mat-paginator>
   </div>
 
   <div class="example-container">
@@ -54,6 +60,8 @@
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>
     </div>
+    <mat-paginator [length]="100" [pageSize]="10">
+    </mat-paginator>
   </div>
 
 

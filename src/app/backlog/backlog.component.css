@@ -13,6 +13,10 @@
   border-radius: 4px;
   overflow: hidden;
   display: block;
+  height: 400px;
+  /* background-color:lightgrey; */
+  border-style: ridge;
+  overflow-y: scroll;
 }
 
 .example-box {
@@ -62,7 +66,7 @@
 .example-element-diagram {
   min-width: 80px;
   border: 2px solid black;
-  padding: 8px;
+  padding: 5px;
   font-weight: lighter;
   margin: 8px 0;
   height: 80px;
@@ -91,4 +95,15 @@
   width: 98%;
   background-color: grey;
   padding: 10px;
+}
+.button-flex-arrangement {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.button-margin-10 {
+  margin: 5px;
+}
+.bold-font {
+  font-weight: bold;
 }
