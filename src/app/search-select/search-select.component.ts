@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
-import { SprintDataService } from "../sprint/sprint-data.service";
 
 @Component({
   selector: "app-search-select",
@@ -7,7 +6,7 @@ import { SprintDataService } from "../sprint/sprint-data.service";
   styleUrls: ["./search-select.component.css"]
 })
 export class SearchSelectComponent implements OnInit {
-  constructor(sprintDataService: SprintDataService) {}
+  constructor() {}
   showList: boolean = false;
 
   @Input() contentToDisplay: string[];
