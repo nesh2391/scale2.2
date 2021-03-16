@@ -75,8 +75,10 @@ export class SprintDataService {
     }
   ];
   subjectSprintData = new Subject<SprintObjectDef[]>();
-  getSprintData(): Subject<SprintObjectDef[]> {
-    this.subjectSprintData.next(this.sprintObjects);
+  getSprintSubject(): Subject<SprintObjectDef[]> {
     return this.subjectSprintData;
+  }
+  refreshSprintdata() {
+    this.subjectSprintData.next(this.sprintObjects);
   }
 }
