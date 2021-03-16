@@ -26,6 +26,7 @@ import { StoriesTableComponent } from "./stories-table/stories-table.component";
 import { SprintTableComponent } from "./sprint-table/sprint-table.component";
 import { ReleasesTableComponent } from "./releases-table/releases-table.component";
 import { DefectComponent } from "./defect/defect.component";
+import { SearchSelectComponent } from './search-select/search-select.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +41,8 @@ import { DefectComponent } from "./defect/defect.component";
     StoriesTableComponent,
     SprintTableComponent,
     ReleasesTableComponent,
-    DefectComponent
+    DefectComponent,
+    SearchSelectComponent
   ],
   imports: [
     BrowserModule,

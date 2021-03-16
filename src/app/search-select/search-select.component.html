@@ -1,0 +1,13 @@
+<div class="dropdown">
+  <div class="clickable" (click)="showList=!showList">
+    <h4 class="displayInline">Select Sprint</h4>
+    <mat-icon *ngIf="!showList">expand_more</mat-icon>
+    <mat-icon *ngIf="showList">expand_less</mat-icon>
+    <h4 class="displayInline">&nbsp;:&nbsp;{{selectedSprint}}</h4>
+  </div>
+  <div id="myDropdown" *ngIf="showList">
+    <input type="text" placeholder="Search.." id="myInput" />
+    <li *ngFor="let item of contentToDisplay">{{item}}</li>
+  </div>
+</div>
+<br />

@@ -12,7 +12,7 @@
     #f0f0f0 20px
   );
   padding: 10px;
-  
+  border-radius: 14px;
 }
 
 .example-list {
@@ -101,7 +101,7 @@
   float: clear;
 }
 .banner-roll-elements {
-  width: 98%;
+  width: 100%;
   background-color: grey;
   padding: 10px;
 }

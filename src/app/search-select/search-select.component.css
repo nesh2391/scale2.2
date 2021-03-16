@@ -1,0 +1,14 @@
+.dropdown {
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  z-index: 2;
+}
+.displayInline {
+  display: inline-block;
+}
+.clickable {
+  cursor: pointer;
+  background-color: whitesmoke;
+  border-radius: 14px;
+}
