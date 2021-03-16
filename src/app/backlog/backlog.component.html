@@ -39,7 +39,7 @@
 <hr />
 <h2>Refinement:</h2>
 <div>
-  <app-search-select [contentToDisplay]="[1,2,3]"></app-search-select>
+  <app-search-select [contentToDisplay]="['1','2','3']" (valueChange)='newSprintValue($event)'></app-search-select>
 </div>
 <div cdkDropListGroup class="zindex1">
   <div class="example-container">

@@ -6,8 +6,21 @@
     <h4 class="displayInline">&nbsp;:&nbsp;{{selectedSprint}}</h4>
   </div>
   <div id="myDropdown" *ngIf="showList">
-    <input type="text" placeholder="Search.." id="myInput" />
-    <li *ngFor="let item of contentToDisplay">{{item}}</li>
+    <input
+      class="input-sprint-search-css"
+      type="text"
+      placeholder="Search.."
+      id="myInput"
+    />
+    <button class="blue-background-sprint-searh-button " mat-mini-fab>
+      <mat-icon>search</mat-icon>
+    </button>
+    <li
+      *ngFor="let item of contentToDisplay"
+      (click)="selectSprintItemClick(item)"
+    >
+      {{item}}
+    </li>
   </div>
 </div>
 <br />

@@ -44,6 +44,10 @@ export class BacklogComponent implements OnInit {
   }
   ngOnInit() {}
 
+  newSprintValue(sprint: any) {
+    console.log("New sprint value", sprint);
+  }
+
   backlogged = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
 
   inProgress = [];
