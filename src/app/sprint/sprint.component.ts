@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { SprintService } from "./sprint.service";
 
 @Component({
   selector: "app-sprint",
@@ -6,7 +7,11 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./sprint.component.css"]
 })
 export class SprintComponent implements OnInit {
-  constructor() {}
-
+  constructor(sprintService: SprintService) {}
+  sprintName: string = "";
   ngOnInit() {}
+
+  addSprint() {
+    this.sprintService.putNewSprintInList(this.sprintName);
+  }
 }
