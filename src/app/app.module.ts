@@ -27,6 +27,7 @@ import { SprintTableComponent } from "./sprint-table/sprint-table.component";
 import { ReleasesTableComponent } from "./releases-table/releases-table.component";
 import { DefectComponent } from "./defect/defect.component";
 import { SearchSelectComponent } from "./search-select/search-select.component";
+import { SprintService } from './sprint/sprint.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,7 +58,8 @@ import { SearchSelectComponent } from "./search-select/search-select.component";
   providers: [
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: "fill" }
+      useValue: { appearance: "fill" },
+      providers: [SprintService]
     }
   ],
   bootstrap: [AppComponent],
