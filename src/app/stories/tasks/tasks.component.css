@@ -1,0 +1,57 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+th,
+td {
+  width: auto;
+  overflow-wrap: break-word;
+}
+.AddTaskButton {
+  float: right;
+}
+.imput-form-allignment-float {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.name-form-field {
+  flex-basis: 50%;
+}
+.number-form-field {
+  flex-basis: 25%;
+}
+.f-10 {
+  /* width: 5%; */
+  /* text-overflow: ellipsis; */
+  flex: 0 0 10% !important;
+}
+.f-80 {
+  /* width: 50%; */
+  flex: 0 0 80% !important;
+  text-overflow: ellipsis;
+}
+.f-75 {
+  /* width: 50%; */
+  flex: 0 0 75% !important;
+  text-overflow: ellipsis;
+}
+.f-35 {
+  flex: 0 0 35% !important;
+}
+.blue-background {
+  background-color: #3f51b5;
+  color: white;
+}
+.grey-background {
+  background-color: lightgrey;
+  color: black;
+}

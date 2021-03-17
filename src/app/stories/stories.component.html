@@ -10,7 +10,6 @@
 	<p><i>The story name is needed to create the sory in the backend.</i></p>
 </div>
 <div *ngIf="data.name">
-
 	<button mat-raised-button (click)="pannelSelect=1">Details</button>
 	<button mat-raised-button (click)="pannelSelect=2">Tasks</button>
 	<button mat-raised-button (click)="pannelSelect=3" >History</button>
@@ -93,7 +92,7 @@
 
 	</div>
 	<div *ngIf="pannelSelect==2">
-		<p>Tasks:</p>
+		<app-tasks level='primary'></app-tasks>
 	</div>
 
 	<div *ngIf="pannelSelect==3">

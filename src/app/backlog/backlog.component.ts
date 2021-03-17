@@ -6,6 +6,7 @@ import {
   moveItemInArray,
   transferArrayItem
 } from "@angular/cdk/drag-drop";
+import { DefectComponent } from "../defect/defect.component";
 
 @Component({
   selector: "app-backlog",
@@ -14,7 +15,14 @@ import {
 })
 export class BacklogComponent implements OnInit {
   name: string;
-  constructor(public dialog: MatDialog) {}
+  topLevelData: any;
+  constructor(public dialog: MatDialog) {
+    // sprintDataService.getSprintSubject().subscribe(data => {
+    //   this.topLevelData = data;
+    // });
+    // sprintDataService.refreshSprintdata();
+    // console.log(this.topLevelData);
+  }
 
   openDialog(dataval: StoriesComponent): void {
     const dialogRef = this.dialog.open(StoriesComponent, {
@@ -28,7 +36,24 @@ export class BacklogComponent implements OnInit {
       //this.name = result;
     });
   }
+
+  openDefectDialog(dataval: DefectComponent): void {
+    const dialogDefectRef = this.dialog.open(DefectComponent, {
+      height: "600px",
+      width: "800px",
+      data: dataval ? dataval : {}
+    });
+
+    dialogDefectRef.afterClosed().subscribe(result => {
+      console.log("The dialog was closed", result);
+      //this.name = result;
+    });
+  }
   ngOnInit() {}
+
+  newSprintValue(sprint: any) {
+    console.log("New sprint value", sprint);
+  }
 
   backlogged = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
 
