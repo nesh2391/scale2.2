@@ -7,7 +7,7 @@ import { SprintService } from "./sprint.service";
   styleUrls: ["./sprint.component.css"]
 })
 export class SprintComponent implements OnInit {
-  constructor(sprintService: SprintService) {}
+  constructor(private sprintService: SprintService) {}
   sprintName: string = "";
   ngOnInit() {}
 
