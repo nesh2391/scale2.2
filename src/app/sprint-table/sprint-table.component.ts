@@ -29,7 +29,7 @@ export class SprintTableComponent implements OnInit {
   ngOnInit() {}
   @Input() level: string;
   expandedStoriesElement: SprintObjectDef | null;
-  sampleDate: number = new Date().getDate();
+  sampleDate: number = new Date();
   mockContent: SprintObjectDef[] = [
     {
       sprintId: 1,
