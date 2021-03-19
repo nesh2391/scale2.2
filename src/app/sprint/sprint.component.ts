@@ -13,7 +13,7 @@ export class SprintComponent implements OnInit {
   subscription: Subscription;
   startDate: Date;
   endDate: Date;
-  sprintObjectDef: SprintObjectDef;
+  sprintObjectDef:Object={};
   constructor(private sprintService: SprintService) {
     this.subscription = this.sprintService.onMessage().subscribe(message => {
       this.sprintData = message.text;
@@ -31,13 +31,9 @@ export class SprintComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   createSprint() {
+    this.sprintObjectDef['sprintName']=this.sprintName;
+    this.sprintObjectDef['sprintStart']=this.startDate;
+    this.sprintObjectDef['sprintEnd']=this.endDate;
     
-    this.sprintObjectDef={
-      sprintId: null,
-      sprintName: this.sprintName,
-      sprintStart: this.startDate,
-      sprintEnd: this.endDate,
-      stories: void
-    };
   }
 }

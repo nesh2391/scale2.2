@@ -28,7 +28,7 @@ export class ReleasesTableComponent implements OnInit {
 
   ngOnInit() {}
   @Input() level: string;
-  sampleDate: number = new Date().getDate();
+  sampleDate: Date = new Date();
   mockData: ReleasesObject[] = [
     {
       releaseId: 1,
