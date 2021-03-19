@@ -39,21 +39,14 @@
 <hr />
 <h2>Refinement:</h2>
 <div>
-  <app-search-select
-    [contentToDisplay]=""
-    (valueChange)="newSprintValue($event)"
-  ></app-search-select>
+  <app-search-select [contentToDisplay]="" (valueChange)="newSprintValue($event)"></app-search-select>
+  this:{{sprintData}}
 </div>
 <div cdkDropListGroup class="zindex1">
   <div class="example-container">
     <h3>Backlogged</h3>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="backlogged"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
+    <div cdkDropList [cdkDropListData]="backlogged" class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of backlogged" cdkDrag>
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>
@@ -64,12 +57,7 @@
   <div class="example-container">
     <h3>In Progress</h3>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="inProgress"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
+    <div cdkDropList [cdkDropListData]="inProgress" class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of inProgress" cdkDrag>
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>
@@ -80,12 +68,7 @@
   <div class="example-container">
     <h3>Archived</h3>
 
-    <div
-      cdkDropList
-      [cdkDropListData]="archived"
-      class="example-list"
-      (cdkDropListDropped)="drop($event)"
-    >
+    <div cdkDropList [cdkDropListData]="archived" class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of archived" cdkDrag>
         <div (click)="openDialog({name:item})">{{item}}</div>
       </div>

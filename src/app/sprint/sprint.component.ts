@@ -7,11 +7,11 @@ import { SprintService } from "./sprint.service";
   styleUrls: ["./sprint.component.css"]
 })
 export class SprintComponent implements OnInit {
-  constructor(sprintService: SprintService) {}
+  constructor(private sprintService: SprintService) {}
   sprintName: string = "";
   ngOnInit() {}
 
   addSprint() {
-    this.sprintService.putNewSprintInList(this.sprintName);
+    this.sprintService.sendMessage("Message message");
   }
 }
