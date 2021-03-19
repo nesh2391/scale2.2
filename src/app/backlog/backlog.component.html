@@ -41,6 +41,7 @@
 <div>
   <app-search-select [contentToDisplay]="" (valueChange)="newSprintValue($event)"></app-search-select>
   this:{{sprintData}}
+  <button (click)='sendUpdate("hi hi")'>check</button>
 </div>
 <div cdkDropListGroup class="zindex1">
   <div class="example-container">

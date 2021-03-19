@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 
 @Injectable()
 export class SprintService {
-  subject = new Subject<any>();
+  subject = new BehaviorSubject({ text: '' });
   constructor() {}
 
   sendMessage(message: string) {
@@ -11,7 +11,7 @@ export class SprintService {
   }
 
   clearMessages() {
-    this.subject.next();
+    this.subject.next({ text: '' });
   }
 
   onMessage(): Observable<any> {

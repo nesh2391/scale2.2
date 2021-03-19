@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { SprintService } from "./sprint.service";
 
 @Component({
@@ -7,11 +8,22 @@ import { SprintService } from "./sprint.service";
   styleUrls: ["./sprint.component.css"]
 })
 export class SprintComponent implements OnInit {
-  constructor(private sprintService: SprintService) {}
+  sprintData: string;
+  subscription: Subscription;
+  constructor(private sprintService: SprintService) {
+    this.subscription = this.sprintService.onMessage().subscribe(message => {
+      this.sprintData = message.text;
+      console.log(message);
+    });
+  }
   sprintName: string = "";
   ngOnInit() {}
 
-  addSprint() {
-    this.sprintService.sendMessage("Message message");
+  addSprint(val:any) {
+    this.sprintService.sendMessage(val);
+  }
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 }
