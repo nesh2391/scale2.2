@@ -12,6 +12,6 @@ export class SprintComponent implements OnInit {
   ngOnInit() {}
 
   addSprint() {
-    this.sprintService.getSprintSubject().next(this.sprintName);
+    this.sprintService.sendMessage("Message message");
   }
 }

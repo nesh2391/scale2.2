@@ -8,6 +8,7 @@ import {
 } from "@angular/cdk/drag-drop";
 import { DefectComponent } from "../defect/defect.component";
 import { SprintService } from "../sprint/sprint.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-backlog",
@@ -18,15 +19,15 @@ export class BacklogComponent implements OnInit {
   name: string;
   topLevelData: any;
   sprintData: string;
+  subscription: Subscription;
   constructor(public dialog: MatDialog, private sprintService: SprintService) {
     // sprintDataService.getSprintSubject().subscribe(data => {
     //   this.topLevelData = data;
     // });
     // sprintDataService.refreshSprintdata();
     // console.log(this.topLevelData);
-    this.sprintService.getSprintSubject().subscribe(data => {
-      this.sprintData = data;
-      console.log("publish ", data);
+    this.subscription = this.sprintService.onMessage().subscribe(message => {
+      this.sprintData = message;
     });
   }
 
@@ -56,6 +57,11 @@ export class BacklogComponent implements OnInit {
     });
   }
   ngOnInit() {}
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
+  }
 
   newSprintValue(sprint: any) {
     console.log("New sprint value", sprint);

@@ -1,21 +1,20 @@
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 @Injectable()
 export class SprintService {
-  subject = new Subject<string>();
+  subject = new Subject<any>();
   constructor() {}
 
-  getSprintSubject(): Subject<string> {
-    return this.subject;
+  sendMessage(message: string) {
+    this.subject.next({ text: message });
   }
 
-  setSubjectWithInitialLoad() {
-    this.subject.next("First");
+  clearMessages() {
+    this.subject.next();
   }
 
-  putNewSprintInList(varx: string) {
-    this.subject.next(varx);
-    console.log("got this", varx);
+  onMessage(): Observable<any> {
+    return this.subject.asObservable();
   }
 }
