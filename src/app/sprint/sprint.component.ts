@@ -31,6 +31,13 @@ export class SprintComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   createSprint() {
-    //this.sprintObjectDef=new SprintObjectDef();
+    
+    this.sprintObjectDef={
+      sprintId: null,
+      sprintName: this.sprintName,
+      sprintStart: this.startDate,
+      sprintEnd: this.endDate,
+      stories: void
+    };
   }
 }
