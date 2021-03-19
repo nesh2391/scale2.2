@@ -7,6 +7,7 @@ import {
   transferArrayItem
 } from "@angular/cdk/drag-drop";
 import { DefectComponent } from "../defect/defect.component";
+import { SprintService } from "../sprint/sprint.service";
 
 @Component({
   selector: "app-backlog",
@@ -16,12 +17,17 @@ import { DefectComponent } from "../defect/defect.component";
 export class BacklogComponent implements OnInit {
   name: string;
   topLevelData: any;
-  constructor(public dialog: MatDialog) {
+  sprintData: string;
+  constructor(public dialog: MatDialog, private sprintService: SprintService) {
     // sprintDataService.getSprintSubject().subscribe(data => {
     //   this.topLevelData = data;
     // });
     // sprintDataService.refreshSprintdata();
     // console.log(this.topLevelData);
+    this.sprintService.getSprintSubject().subscribe(data => {
+      this.sprintData = data;
+      console.log("publish ", data);
+    });
   }
 
   openDialog(dataval: StoriesComponent): void {

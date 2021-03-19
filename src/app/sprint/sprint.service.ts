@@ -16,5 +16,6 @@ export class SprintService {
 
   putNewSprintInList(varx: string) {
     this.subject.next(varx);
+    console.log("got this", varx);
   }
 }
