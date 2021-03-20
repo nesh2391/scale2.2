@@ -1,25 +1,37 @@
-<input type="text" [(ngModel)]="sprintName"><button mat-raised-button (click)="addSprint('hello hello')">Submit</button>
-{{sprintData}}
-<form name="newSprintForm">
-  <div class="row">
-    <div class="col">
-      <input type="text" name="sprintName" [(ngModel)]="sprintName" class="form-control" placeholder="Sprint Name">
-    </div>
-  </div>
-  <div class="row">
-    <br>
-  </div>
-  <div class="row">
-    <div class="col">
-      <input  [(ngModel)]="startDate" name="startDate" type="date" class="form-control" placeholder="Start Date">
-    </div>
-    <div class="col">
-      <input  [(ngModel)]="endDate"  name="endDate" type="date" class="form-control" placeholder="End Date">
-    </div>
-  </div>
-  <div class="row">
-    <br>
-  </div>
-  <button type="submit" (click)="createSprint()" class="btn btn-primary">Submit</button>
-</form>
+<!-- <input type="text" [(ngModel)]="sprintName"><button mat-raised-button (click)="addSprint('hello hello')">Submit</button>
+{{sprintData}} -->
+
+<mat-accordion>
+  <mat-expansion-panel [expanded]="panelOpenState">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Add Sprint
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form name="newSprintForm">
+      <div class="row">
+        <div class="col">
+          <input type="text" name="sprintName" [(ngModel)]="sprintName" class="form-control" placeholder="Sprint Name">
+        </div>
+      </div>
+      <div class="row">
+        <br>
+      </div>
+      <div class="row">
+        <div class="col">
+          <input  [(ngModel)]="startDate" name="startDate" type="date" class="form-control" placeholder="Start Date">
+        </div>
+        <div class="col">
+          <input  [(ngModel)]="endDate"  name="endDate" type="date" class="form-control" placeholder="End Date">
+        </div>
+      </div>
+      <div class="row">
+        <br>
+      </div>
+      <button type="submit" (click)="createSprint()" class="btn btn-primary">Submit</button>
+    </form>
+  </mat-expansion-panel>
+</mat-accordion>
+<br>
+
 <app-sprint-table level="primary"></app-sprint-table>

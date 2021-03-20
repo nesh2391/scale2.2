@@ -27,10 +27,10 @@ export class BacklogComponent implements OnInit {
     // sprintDataService.refreshSprintdata();
     // console.log(this.topLevelData);
     this.subscription = this.sprintService.onMessage().subscribe(message => {
-      this.sprintData = message.text;
+      //this.sprintData = message.text;
     });
   }
-  sendUpdate(val:any){
+  sendUpdate(val: any) {
     console.log("checking");
     this.sprintService.sendMessage(val);
   }

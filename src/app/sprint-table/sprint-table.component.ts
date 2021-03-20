@@ -6,7 +6,9 @@ import {
   trigger
 } from "@angular/animations";
 import { Component, Input, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { SprintObjectDef } from "../general-interfaces/sprint-object-def";
+import { SprintService } from "../sprint/sprint.service";
 
 @Component({
   selector: "app-sprint-table",
@@ -24,79 +26,19 @@ import { SprintObjectDef } from "../general-interfaces/sprint-object-def";
   ]
 })
 export class SprintTableComponent implements OnInit {
-  constructor() {}
+  subscription: Subscription;
+  dataSource: any;
+  constructor(private sprintService: SprintService) {
+    this.subscription = this.sprintService.onMessage().subscribe(message => {
+      this.dataSource = message;
+      console.log(message);
+    });
+  }
 
   ngOnInit() {}
   @Input() level: string;
   expandedStoriesElement: SprintObjectDef | null;
-  sampleDate: Date = new Date();
-  mockContent: SprintObjectDef[] = [
-    {
-      sprintId: 1,
-      sprintName: "sample Test 1",
-      sprintStart: this.sampleDate,
-      sprintEnd: this.sampleDate,
-      stories: [
-        {
-          name: "story-test-1",
-          componentName: "feature-x",
-          state: 1,
-          sprintId: 1,
-          assignedTo: "john doe",
-          ticketChecked: false,
-          ticketDetails: null,
-          title: null,
-          nonDevelopmentStory: null,
-          featureName: null
-        },
-        {
-          name: "story-test-1",
-          componentName: "feature-x",
-          state: 1,
-          sprintId: 1,
-          assignedTo: "john doe",
-          ticketChecked: false,
-          ticketDetails: null,
-          title: null,
-          nonDevelopmentStory: null,
-          featureName: null
-        },
-        {
-          name: "story-test-1",
-          componentName: "feature-x",
-          state: 1,
-          sprintId: 1,
-          assignedTo: "john doe",
-          ticketChecked: false,
-          ticketDetails: null,
-          title: null,
-          nonDevelopmentStory: null,
-          featureName: null
-        }
-      ]
-    },
-    {
-      sprintId: 1,
-      sprintName: "sample Test 1",
-      sprintStart: this.sampleDate,
-      sprintEnd: this.sampleDate,
-      stories: [
-        {
-          name: "story-test-1",
-          componentName: "feature-x",
-          state: 1,
-          sprintId: 1,
-          assignedTo: "john doe",
-          ticketChecked: false,
-          ticketDetails: null,
-          title: null,
-          nonDevelopmentStory: null,
-          featureName: null
-        }
-      ]
-    }
-  ];
-  dataSource = this.mockContent;
+
   displayValues = {
     sprintName: "Sprint Name",
     sprintStart: "Start Date",
