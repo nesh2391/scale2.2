@@ -8,10 +8,13 @@
         Add Sprint
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <form name="newSprintForm">
+    <form [formGroup]="newSprintForm">
       <div class="row">
         <div class="col">
-          <input type="text" required name="sprintName" [(ngModel)]="sprintName" class="form-control" placeholder="Sprint Name">
+          <div class="alert alert-danger" *ngIf="sprintName.invalid && (sprintName.dirty || sprintName.touched)">
+            Sprint Name is a required field
+          </div>
+          <input type="text" formControlName="sprintName"  class="form-control" placeholder="Sprint Name">
         </div>
 
       </div>
@@ -20,16 +23,22 @@
       </div>
       <div class="row">
         <div class="col">
-          <input  [(ngModel)]="startDate" name="startDate" type="date" class="form-control" placeholder="Start Date">
+          <div class="alert alert-danger" *ngIf="sprintStart.invalid && (sprintStart.dirty || sprintStart.touched)">
+            Below Field Required
+          </div>
+          <input  formControlName="sprintStart" type="date" class="form-control" placeholder="Start Date">
         </div>
         <div class="col">
-          <input  [(ngModel)]="endDate"  name="endDate" type="date" class="form-control" placeholder="End Date">
+          <div class="alert alert-danger" *ngIf="sprintEnd.invalid && (sprintEnd.dirty || sprintEnd.touched)">
+            Below Field Required
+          </div>
+          <input formControlName="sprintEnd" type="date" class="form-control" placeholder="End Date">
         </div>
       </div>
       <div class="row">
         <br>
       </div>
-      <button type="submit" (click)="createSprint()" class="btn btn-primary">Submit</button>
+      <button type="submit" [disabled]="newSprintForm.status=='INVALID'" (click)="createSprint()" class="btn btn-primary">Submit</button>
     </form>
   </mat-expansion-panel>
 </mat-accordion>

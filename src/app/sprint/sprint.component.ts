@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { SprintObjectDef } from "../general-interfaces/sprint-object-def";
 import { SprintObject } from "./sprint-object";
@@ -11,18 +12,20 @@ import { SprintService } from "./sprint.service";
 })
 export class SprintComponent implements OnInit {
   sprintData: string;
+  newSprintForm = new FormGroup({
+    sprintName: new FormControl("", Validators.required),
+    sprintStart: new FormControl("", Validators.required),
+    sprintEnd: new FormControl("", Validators.required)
+  });
   panelOpenState = false;
   subscription: Subscription;
-  startDate: Date;
-  endDate: Date;
-  sprintObjectDef: SprintObject;
+
   constructor(private sprintService: SprintService) {
     this.subscription = this.sprintService.onMessage().subscribe(message => {
       //this.sprintData = message.text;
       console.log(message);
     });
   }
-  sprintName: string = "";
   ngOnInit() {}
 
   ngOnDestroy() {
@@ -30,16 +33,28 @@ export class SprintComponent implements OnInit {
     this.subscription.unsubscribe();
   }
   createSprint() {
-    this.sprintObjectDef = new SprintObject();
-    this.sprintObjectDef["sprintName"] = this.sprintName;
-    this.sprintObjectDef["sprintStart"] = this.startDate;
-    this.sprintObjectDef["sprintEnd"] = this.endDate;
-    this.sprintService.sendMessage(this.sprintObjectDef);
+    let sprintObjectDef: SprintObject = this.newSprintForm.value;
 
+    console.log(sprintObjectDef);
+    this.sprintService.sendMessage(sprintObjectDef);
     console.log("gingy bear", this.panelOpenState);
+    this.resetForm();
   }
 
+  resetForm() {
+    this.newSprintForm.reset();
+  }
   toggleAccordina() {
     this.panelOpenState = !this.panelOpenState;
+  }
+
+  get sprintName() {
+    return this.newSprintForm.get("sprintName");
+  }
+  get sprintStart() {
+    return this.newSprintForm.get("sprintStart");
+  }
+  get sprintEnd() {
+    return this.newSprintForm.get("sprintEnd");
   }
 }

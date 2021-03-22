@@ -9,7 +9,7 @@ import { BacklogComponent } from "./backlog/backlog.component";
 import { HomeComponent } from "./home/home.component";
 import { platformBrowserDynamic } from "@angular/platform-browser-dynamic";
 
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from "@angular/material/form-field";
 
@@ -28,6 +28,7 @@ import { ReleasesTableComponent } from "./releases-table/releases-table.componen
 import { DefectComponent } from "./defect/defect.component";
 import { SearchSelectComponent } from "./search-select/search-select.component";
 import { SprintService } from "./sprint/sprint.service";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { SprintService } from "./sprint/sprint.service";
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FlexLayoutModule,
     DemoMaterialModule,
     AppRoutingModule,
