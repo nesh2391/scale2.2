@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Subscription } from "rxjs";
+import { SprintService } from "../sprint/sprint.service";
 
 @Component({
   selector: "app-search-select",
@@ -6,11 +8,18 @@ import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
   styleUrls: ["./search-select.component.css"]
 })
 export class SearchSelectComponent implements OnInit {
-  constructor() {}
+  subscription: Subscription;
+  dataSource: any;
+  constructor(private sprintService: SprintService) {
+    this.subscription = this.sprintService.onMessage().subscribe(message => {
+      this.dataSource = message;
+      console.log("message", message);
+    });
+  }
   showList: boolean = false;
 
   @Input() contentToDisplay: string[];
-  selectedSprint: string = "Unselected";
+  selectedSprint: any = {sprintName:"Unselected"};
   @Output() valueChange = new EventEmitter();
 
   ngOnInit() {}

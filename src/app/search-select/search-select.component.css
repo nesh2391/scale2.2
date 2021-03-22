@@ -20,3 +20,6 @@
 .input-sprint-search-css {
   padding: 5px;
 }
+.pointer-search-select {
+  cursor: pointer;
+}

@@ -7,7 +7,6 @@
       (click)="openDialog(null)"
     >
       <div class="example-element-diagram">
-        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
         <div class="example-element-symbol">US</div>
         <div class="bold-font">User Story</div>
       </div>
@@ -18,7 +17,6 @@
       (click)="openDefectDialog(null)"
     >
       <div class="example-element-diagram">
-        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
         <div class="example-element-symbol">DE</div>
         <div class="bold-font">Defect</div>
       </div>
@@ -29,7 +27,6 @@
       (click)="openDefectDialog(null)"
     >
       <div class="example-element-diagram">
-        <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>  -->
         <div class="example-element-symbol">NT</div>
         <div class="bold-font">Note</div>
       </div>
@@ -38,11 +35,16 @@
 </div>
 <hr />
 <h2>Refinement:</h2>
+<!-- Sprint Select Component -->
 <div>
   <app-search-select [contentToDisplay]="" (valueChange)="newSprintValue($event)"></app-search-select>
   this:{{sprintData}}
   <button (click)='sendUpdate("hi hi")'>check</button>
 </div>
+
+
+
+<!-- Drag and drop component -->
 <div cdkDropListGroup class="zindex1">
   <div class="example-container">
     <h3>Backlogged</h3>

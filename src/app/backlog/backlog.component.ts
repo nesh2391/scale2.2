@@ -20,16 +20,8 @@ export class BacklogComponent implements OnInit {
   topLevelData: any;
   sprintData: string;
   subscription: Subscription;
-  constructor(public dialog: MatDialog, private sprintService: SprintService) {
-    // sprintDataService.getSprintSubject().subscribe(data => {
-    //   this.topLevelData = data;
-    // });
-    // sprintDataService.refreshSprintdata();
-    // console.log(this.topLevelData);
-    this.subscription = this.sprintService.onMessage().subscribe(message => {
-      //this.sprintData = message.text;
-    });
-  }
+  sprintDataSource: any;
+  constructor(public dialog: MatDialog, private sprintService: SprintService) {}
   sendUpdate(val: any) {
     console.log("checking");
     this.sprintService.sendMessage(val);
@@ -62,10 +54,7 @@ export class BacklogComponent implements OnInit {
   }
   ngOnInit() {}
 
-  ngOnDestroy() {
-    // unsubscribe to ensure no memory leaks
-    this.subscription.unsubscribe();
-  }
+  ngOnDestroy() {}
 
   newSprintValue(sprint: any) {
     console.log("New sprint value", sprint);
