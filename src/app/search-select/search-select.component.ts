@@ -19,7 +19,7 @@ export class SearchSelectComponent implements OnInit {
   showList: boolean = false;
 
   @Input() contentToDisplay: string[];
-  selectedSprint: any = {sprintName:"Unselected"};
+  selectedSprint: any = { sprintName: "Unselected" };
   @Output() valueChange = new EventEmitter();
 
   ngOnInit() {}
