@@ -60,9 +60,29 @@ export class BacklogComponent implements OnInit {
     console.log("New sprint value", sprint);
   }
 
-  backlogged = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
+  //backlogged = ["Get to work", "Pick up groceries", "Go home", "Fall asleep"];
+  backlogged = [
+    {
+      name: "Research on Lead Guitar Solo",
+      assignedTo: "John, Doe",
+      state: 1,
+      definitionOfDone: "sounds real good"
+    },
+    {
+      name: "Research on Rithm Guitar Solo",
+      assignedTo: "Jane, Doe",
+      state: 1,
+      definitionOfDone: "sounds real good"
+    },
+    {
+      name: "Research on Base Guitar Solo",
+      assignedTo: "Mark, Doe",
+      state: 1,
+      definitionOfDone: "sounds real good"
+    }
+  ];
 
-  inProgress = [];
+  inProgress = ["Get to work", "Pick up groceries"];
 
   archived = [
     "Get up",

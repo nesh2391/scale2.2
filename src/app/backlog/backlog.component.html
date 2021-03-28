@@ -47,9 +47,16 @@
   <div class="example-container">
     <h3>Backlogged</h3>
 
+    <!-- 
+      Backlogged column 
+    -->
     <div cdkDropList [cdkDropListData]="backlogged" class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of backlogged" cdkDrag>
-        <div (click)="openDialog({name:item})">{{item}}</div>
+        <div>
+          <h5>{{item.name}}</h5>
+          Assigned to: {{item.assignedTo}}
+          State: {{item.state}}
+        </div>
       </div>
     </div>
     <mat-paginator [length]="100" [pageSize]="10"> </mat-paginator>
