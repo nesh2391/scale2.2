@@ -13,9 +13,17 @@ import { QuillModule } from "ngx-quill";
   styleUrls: ["./stories.component.css"]
 })
 export class StoriesComponent implements OnInit {
+  //NG-Quill editor refference
   quillEditorRef;
+
+  //The HTML view uses buttons instead of tabs, because the buttons provided
+  //better feedback for mobile interaction. The pannel selected is the variable
+  //the buttons operate to show different pannels.
   pannelSelect: number = 1;
+
+  //The Max file upload size arbitrary selected
   maxUploadFileSize = 1000000;
+
   constructor(
     public dialogRef: MatDialogRef<StoriesComponent>,
     @Inject(MAT_DIALOG_DATA) public data: StoriesPopUpData
@@ -24,10 +32,16 @@ export class StoriesComponent implements OnInit {
   ngOnInit() {
     console.log("Data.name: ", this.data.name);
   }
+
   onNoClick(): void {
     this.dialogRef.close();
   }
 
+  /**
+   * <h1>Attach a custom handler to Quil text editor</h1>
+   *
+   * <p>Does: attaches a custom handler for the Image function</p>
+   */
   getEditorInstance(editorInstance: any) {
     this.quillEditorRef = editorInstance;
 
@@ -36,6 +50,19 @@ export class StoriesComponent implements OnInit {
     const toolbar = editorInstance.getModule("toolbar");
     toolbar.addHandler("image", this.imageHandler);
   }
+
+  /**
+   * <h1>Image handler for quil text editor</h1>
+   *
+   * <p>Does: provides a custom image handler for NG-Quil text editor</p>
+   * <p>Needed Because: a limit hat to be placed on the size of the Quil text.
+   * A value of 1 MB was selected at random to be the limit of the text.</p>
+   *
+   * <p>Global variables reffered</p>
+   * <ol>
+   * <li>maxUploadFileSize: The file size of 1 MB</li>
+   * </ol>
+   */
   imageHandler = (image, callback) => {
     const input = <HTMLInputElement>document.getElementById("fileInputField");
     document.getElementById("fileInputField").onchange = () => {
@@ -64,10 +91,4 @@ export class StoriesComponent implements OnInit {
 
     input.click();
   };
-  // imageHandler = (image, callback) => {
-  //   const range = this.quillEditorRef.getSelection();
-  //   const img =
-  //     '<a href="https://image.flaticon.com/icons/png/128/126/126477.png" data-lightbox="image-1" data-title="My caption"> <div> <img src="https://image.flaticon.com/icons/png/128/126/126477.png" height="50"/> </div> </a>';
-  //   this.quillEditorRef.clipboard.dangerouslyPasteHTML(range.index, img);
-  // };
 }
