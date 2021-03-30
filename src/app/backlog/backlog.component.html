@@ -1,7 +1,13 @@
-<h2>Scrum Elements:</h2>
-<div class="banner-roll-elements">
-  <div class="button-flex-arrangement">
-    <button
+<mat-accordion>
+  <mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h4>Scrum Elements:</h4>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <<div class="banner-roll-elements">
+      <div class="button-flex-arrangement">
+        <button
       mat-raised-button
       class="button-margin-10"
       (click)="openDialog(null)"
@@ -11,7 +17,7 @@
         <div class="bold-font">User Story</div>
       </div>
     </button>
-    <button
+        <button
       mat-raised-button
       class="button-margin-10"
       (click)="openDefectDialog(null)"
@@ -21,7 +27,7 @@
         <div class="bold-font">Defect</div>
       </div>
     </button>
-    <button
+        <button
       mat-raised-button
       class="button-margin-10"
       (click)="openDefectDialog(null)"
@@ -31,9 +37,11 @@
         <div class="bold-font">Note</div>
       </div>
     </button>
-  </div>
-</div>
-<hr />
+      </div>
+      </div>
+  </mat-expansion-panel>
+</mat-accordion>
+
 <h2>Refinement:</h2>
 <!-- Sprint Select Component -->
 <div>
@@ -46,6 +54,7 @@
 <div cdkDropListGroup class="zindex1">
   <div class="example-container">
     <h3>Backlogged</h3>
+
 
     <!-- 
       Backlogged column 
