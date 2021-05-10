@@ -2,7 +2,6 @@ version: 0.2
 env:
     variables:
         CACHE_CONTROL: "86400"
-        S3_BUCKET: $S3_BUCKET_NAME
 phases:
     install:
         commands:
@@ -15,7 +14,7 @@ phases:
             - ng build --prod
     post_build:
          commands:
-            - aws s3 sync  ./dist/scale2 s3://${S3_BUCKET} --delete 
+            - aws s3 sync  ./dist/scale2 s3://scalelistical --delete --acl public-read
             - echo Build completed on `date`
 artifacts:
     files:
