@@ -1,7 +1,7 @@
 version: 0.2
 env:
-    variables:
-        CACHE_CONTROL: "86400"
+    parameter-store:
+        S3_BUCKET: "otfe-bucket-name"
 phases:
     install:
         commands:
@@ -14,7 +14,7 @@ phases:
             - ng build --prod
     post_build:
          commands:
-            - aws s3 sync  ./dist/scale2 s3://scalelistical --delete --acl public-read
+            - aws s3 sync  ./dist/scale2 s3://$S3_BUCKET --delete --acl public-read
             - echo Build completed on `date`
 artifacts:
     files:
