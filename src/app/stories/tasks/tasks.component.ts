@@ -15,6 +15,7 @@ export interface tasks {
 })
 export class TasksComponent implements OnInit {
   @Input() level: string;
+  public addTaskInPlaceEdit:boolean=false;
   constructor() {}
 
   dataSourceMock: tasks[] = [

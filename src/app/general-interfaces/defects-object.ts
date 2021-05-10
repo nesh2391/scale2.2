@@ -5,4 +5,5 @@ export interface DefectsObject {
   defectResolution: number;
   defectCreatedBy: string;
   defectText: string;
+  name:string;
 }
