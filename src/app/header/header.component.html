@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <h1> <a mat-button [routerLink]="'/home'">Scaleistical</a></h1>
+        <a mat-button [routerLink]="'/guide'"> Documentation </a>
+        <span class="menu-spacer"></span>
+        <div fxShow="true" fxFlex fxLayout>
+            <div fxFlex fxLayoutAlign="flex-end center">
+                <a (click)="signIn()" class="btn btn-secondary" mat-button>
+                    <div *ngIf="server; else elseBlock">Logout</div>
+                    <ng-template #elseBlock>Login/Signup <i class="material-icons">login</i></ng-template>
+                </a>
+            </div>
+        </div>
+    </mat-toolbar-row>
+    <mat-toolbar-row class="red-background-for-server-header" style="min-height: 40px !important; height: 40px !important;">
+        <div fxShow="true" fxFlex fxLayout>
+            <div fxFlex *ngIf="loggedIn">
+                <a mat-button  *ngIf="server" [routerLink]="'/server-select'"> 
+                    <div *ngIf="server; else elseBlock">Server:{{server}}</div>
+                    <ng-template #elseBlock>Select Server</ng-template> 
+                </a>
+                <a mat-button  *ngIf="server" [routerLink]="'/user-management'"> User Management </a>
+                <a mat-button  *ngIf="server" [routerLink]="'/process'"> Processes </a>
+                <a mat-button *ngIf="server" [routerLink]="'/account'"> Account </a>
+
+            </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -28,7 +28,12 @@ import { ReleasesTableComponent } from "./releases-table/releases-table.componen
 import { DefectComponent } from "./defect/defect.component";
 import { SearchSelectComponent } from "./search-select/search-select.component";
 import { SprintService } from "./sprint/sprint.service";
+import { HeaderComponent } from './header/header.component';
+import { UserManagementModule } from './user-management/user-management.module';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SelectEnvironmentComponent } from './select-environment/select-environment.component';
+import { AuthInterceptorService } from "./interceptor/auth-interceptor.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +49,9 @@ import { SprintService } from "./sprint/sprint.service";
     SprintTableComponent,
     ReleasesTableComponent,
     DefectComponent,
-    SearchSelectComponent
+    SearchSelectComponent,
+    HeaderComponent,
+    SelectEnvironmentComponent
   ],
   imports: [
     BrowserModule,
@@ -53,8 +60,10 @@ import { SprintService } from "./sprint/sprint.service";
     DemoMaterialModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     GuideModule,
     BrowserAnimationsModule,
+    UserManagementModule,
     QuillModule.forRoot()
   ],
   providers: [
@@ -62,13 +71,14 @@ import { SprintService } from "./sprint/sprint.service";
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: { appearance: "fill" }
     },
-    { provide: SprintService, useClass: SprintService }
+    { provide: SprintService, useClass: SprintService },
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true}
   ],
   bootstrap: [AppComponent],
   entryComponents: [BacklogComponent, StoriesComponent, DefectComponent]
 })
 export class AppModule {}
 
-platformBrowserDynamic()
-  .bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+// platformBrowserDynamic()
+//   .bootstrapModule(AppModule)
+//   .catch(err => console.error(err));

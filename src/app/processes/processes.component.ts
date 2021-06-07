@@ -10,6 +10,7 @@ export class ProcessesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    console.log("ProcessesComponent()");
   }
 
 }

@@ -1,6 +1,6 @@
 version: 0.2
 env:
-    parameter-store:
+    variables:
         S3_BUCKET_NAME: $S3_BUCKET_NAME
 phases:
     install:
