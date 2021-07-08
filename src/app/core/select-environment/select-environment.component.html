@@ -1,0 +1,91 @@
+<div class="container-select-panel">
+    <div class="inner-box" id="bluebox">
+      <div class="container">
+        <div class="row">
+          <div class="col boundry-line" id="server_list">
+            <h3 class="allign-text-in-center">List of servers:</h3>
+            <div class="server-select-list">
+                <div *ngIf="!returnedServerObject; else elseBlock">Loading...</div>
+                <ng-template #elseBlock>
+                    <div class="server-display-box" *ngFor="let ser of returnedServerObject" (click)="setServer(ser)"
+                         [ngClass]="{'grey-selected-option': selectedServer == ser}" >
+                        <div>
+                            <h6>{{ser.name}}</h6>
+                            <div class="subscript_for_server_name_tile">:{{ser.description}}</div>
+                        </div>
+                    </div>
+                </ng-template>
+
+            </div>
+            <p>Shows the servers you are a part of, select one to proceed.</p>
+          </div>
+          <div class="col">
+              <div *ngIf="serverCreateAndAcceptInviteToggle=='select'" >
+                  <mat-grid-list cols="1" rowHeight="2:1">
+                      <mat-grid-tile>
+                          <div (click)="serverCreateAndAcceptInviteToggle='create-server'">
+                              <i class="fas fa-server fa-5x"></i>
+                          <p>Create a Server</p>
+                          </div>
+                      </mat-grid-tile>
+                      <mat-grid-tile>
+                          <div (click)="serverCreateAndAcceptInviteToggle='user-invites'">
+                              <i class="fas fa-door-open fa-5x"></i>
+                          <p>Invites to a Server</p>
+                          </div>
+                      </mat-grid-tile>
+                  </mat-grid-list>
+              </div>
+            <div *ngIf="serverCreateAndAcceptInviteToggle=='create-server'">
+
+            <h3 class="allign-text-in-center">Create a server:</h3>
+            <form [formGroup]="createServerForm" (ngSubmit)="onSubmitCreateServer()">
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Server Name:</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput" [ngClass]="{'is-invalid': createServerForm.get('serverName').invalid && createServerForm.get('serverName').dirty}" placeholder="My first server" formControlName="serverName">
+                    <small calss="text-muted">Max length 100, Min 5, Letter, Numbers, _ only</small>
+
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Server Description</label>
+                  <input type="text" class="form-control" id="formGroupExampleInput2"  [ngClass]="{'is-invalid': createServerForm.get('serverDescription').invalid && createServerForm.get('serverDescription').dirty}" placeholder="This server helps me get stuff done" formControlName="serverDescription">
+                    <small calss="text-muted">Max lenght 100, Letter, Numbers, _ only</small>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" formControlName="acceptedTandC">
+                    <label class="form-check-label" for="flexCheckDefault">
+                       Accept Terms and Conditions
+                    </label>
+                </div>
+                <button class="btn btn-primary"  (click)="serverCreateAndAcceptInviteToggle='select'">Back</button>&nbsp;
+                <button type="submit" class="btn btn-primary" [disabled]="!createServerForm.valid">Submit</button>
+              </form>
+              <div class="small-font-for-disclosure">Scaleistical is a startup/side project. Scaleistical has many limitiation at this time, please contact Scaleistical if you intend to use this in a Official/Production sence.</div>
+            </div>
+              <div *ngIf="serverCreateAndAcceptInviteToggle=='user-invites'">
+                  <button (click)="serverCreateAndAcceptInviteToggle='select'">Back</button>
+                  <br>
+                  <div *ngIf="!invitesArray; else elseBlock">No invites.</div>
+                  <ng-template #elseBlock>
+                      <div class="server-display-box" *ngFor="let inv of invitesArray">
+                          <div>
+                              <h6>Invite from: {{inv.environmentName}}</h6>
+                              <div class="subscript_for_server_name_tile">:{{inv.environmentDescription}}</div>
+                              <div class="row">
+                                  <div class="col"><button style="width:100%"> Accept</button></div>
+                                  <div class="col"><button style="width:100%"> Reject</button></div>
+                              </div>
+                          </div>
+                      </div>
+                  </ng-template>
+
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+<div class="footer-select-server ">
+    <app-footer></app-footer>
+</div>

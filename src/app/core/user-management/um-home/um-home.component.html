@@ -1,0 +1,231 @@
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            <br>
+            <br>
+            <br>
+            <h4>Your role on this server:</h4>
+            <p><b>Server Name:</b> {{userEnvironmentRelation['environmentName']}}</p>
+            <p><b>Assigned Role (You are a):</b> {{userEnvironmentRelation['roleName']}}</p>
+            <hr>
+        </div>
+        <div class="col-3">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6">
+            Search for a user:
+            <div class="input-group mb-3">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Data To Search"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                        [(ngModel)]="SearchFunctionInputBinding"
+                />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" *ngIf="SearchFunctionInputBinding" (click)="clearUserSearch()" type="button">X</button>
+                    <button class="btn btn-outline-secondary" (click)="setUserSearch()" type="button">Search</button>
+                </div>
+            </div>
+
+            <br>
+            <h4>Users:</h4>
+            <div class="flex-container">
+                    <div class="flex-child">
+                        <div >
+                        <div class="server-users-list">
+                            <table class="table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            <tr  *ngFor="let usr of ListOfUsersForSerever" (click)="userSelected(usr)">
+                                <td><img src="{{usr.base64Picture}}"  style="border-radius: 50%" width="50" height="50" /></td>
+                                <td>{{usr.userName}}</td>
+                            </tr>
+                            </tbody>
+                            </table>
+
+                        </div>
+
+                        <mat-paginator  #paginator [pageSize]="NumberOfUsersForServerAveragePageSize"   [length]="totalNumberOfusersForserver"
+                                        [pageIndex]="NumberOfUsersForServerCurrentPage" (page)="pageEventUsersPerServer = handlePageUsersPerServer($event)">
+                        </mat-paginator>
+                        </div>
+                    </div>
+
+                    <div class="flex-child um-home-solid-black-border-and-padding-shadow">
+                        <div *ngIf="selectedProfile else elseBlock">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="{{selectedProfile.base64Picture}}" class="center-image-plexi-card"  /><br>
+
+                                        <b>User Id:</b> {{selectedProfile.userId}}<br>
+                                        <b>Name:</b>{{selectedProfile.userName}}<br>
+                                        <b>Role:</b> {{selectedProfile.roleName}} <button style ="padding: 0;border: none;background: none" *ngIf="!profileEditMode" (click)="profileEditMode=true"><i class="fas fa-edit"></i></button><br>
+                                        <div  *ngIf="profileEditMode">
+                                            <button style ="padding: 0;border: none;background: none"  (click)="profileEditMode=false"><i class="fas fa-save"></i></button>
+                                            <form>
+                                                 <input type="radio" id="html" name="fav_language" value="HTML">
+                                                 <label for="html">HTML</label><br>
+                                                 <input type="radio" id="css" name="fav_language" value="CSS">
+                                                 <label for="css">CSS</label><br>
+                                                 <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+                                                 <label for="javascript">JavaScript</label>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <ng-template #elseBlock>Select a user</ng-template>
+                    </div>
+
+
+            </div>
+
+            <br>
+            <br>
+            <br>
+            <h4>Invite a person to the server</h4>
+<!--            <div class="flex-container">-->
+<!--                <div class="flex-child">-->
+<!--                    <input type="email" class="width-100">-->
+<!--                </div>-->
+<!--                <div class="flex-child">-->
+<!--                    <button (click)="sendInvite()">Send Invite</button>-->
+<!--                </div>-->
+<!--            </div>-->
+            <form class="form-group" [formGroup]="inviteFormEmailinvite">
+                <div >
+                    <label for="exampleInputEmail1">Email address of person to invite: </label>
+                    <input id="emailOrInvited"  [email]="true" formControlName="emailOrInvited" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                    <small  class="form-text text-muted"><i>* Due to privacy reason we cant provide a list of users to select from. You need to enter the exact email address.</i></small>
+                </div>
+                <button  (click)="sendInviteToAddUserEmail()" class="btn btn-primary" [disabled]="!inviteFormEmailinvite.valid">Submit</button>
+            </form>
+            <br>
+            <br>
+            <h4>Pending Invites:</h4>
+            <br>
+            <br>
+            <div class="invited-users-list">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Email</th>
+                        <th scope="col">Invited On</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr  *ngFor="let invites of ListOfInvites" >
+                        <td>{{invites.userEmail}}</td>
+                        <td>{{invites.createdDate | date:'dd/MM/yyyy'}}</td>
+                        <td><button style ="padding: 0;border: none;background: none" (click)="removeInvite(invites)"><i class="fas fa-trash-alt"></i></button></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <mat-paginator id="listOfInvitesPaginator" [pageSize]="pendingInvitesPageSize"  [showFirstLastButtons]="true" [length]="totalNumberOfPendingInvites"
+                               [pageIndex]="currentPagePendingInvites" (page)="pageEventPendingInvites = handlePagePendingInvites($event)">
+                </mat-paginator>
+            </div>
+
+
+            <br>
+            <h4>Focus Groups (Create a focus group):</h4>
+            <small id="emailHelp" class="form-text text-muted"><i>* A focus group is a smaller set of server members. This is a scrum team to say, it is caped at a max of 7 members. The name focus group indicating the dynamic nature of teams themselves.</i></small>
+            <!--            <div class="flex-container">-->
+<!--                <div class="flex-child">-->
+<!--                    <input type="text" class="width-100"><br>-->
+<!--                    <input type="text" class="width-100">-->
+<!--                </div>-->
+<!--                <div class="flex-child">-->
+<!--                    <button (click)="createGroup()">Send Invite</button>-->
+<!--                </div>-->
+<!--            </div>-->
+            <form [formGroup]="createFocusGroupFrom">
+                <div class="form-group">
+                    <label for="createAFocusGroupName">Enter Focus Group Name: </label>
+                    <input  formControlName="focusGrupName" class="form-control" id="createAFocusGroupName" rows="1">
+                </div>
+                <div class="form-group">
+                    <label for="createAFocusGroupDescription">Enter Focus Group Description: </label>
+                    <input  formControlName="focusGrupDescription" class="form-control" id="createAFocusGroupDescription" rows="1">
+                </div>
+                <button type="submit" (click)="createGroup()" [disabled]="!createFocusGroupFrom.valid" class="btn btn-primary">Submit</button>
+            </form>
+            <br>
+            <br>
+            <h4>Focus Groups (Manage Existing Focus Groups):</h4>
+            <div class="flex-container">
+                <div class="flex-child server-users-list">
+                    <table class="table">
+                        <thead>
+                        </thead>
+                        <tbody>
+                        <tr  *ngFor="let group of groups" (click)="groupSelected(group)">
+                            <td>{{group.name}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="flex-child um-home-solid-black-border-and-padding-shadow ">
+                    <div *ngIf="selectedGroup else elseBlock" class="server-users-list">
+
+                        <b>Group Id:</b> {{selectedGroup.id}}<br>
+                        <b>Name:</b>{{selectedGroup.name}}<br>
+                        <b>Description :</b> {{selectedGroup.description}}<br><br>
+                        <p>Add Memebers to Group: </p><br>
+                        <div class="flex-container">
+                            <div class="flex-child">
+                                <input type="email" class="width-100">
+                            </div>
+                            <div class="flex-child">
+                                <button (click)="addMember()">Send Invite</button>
+                            </div>
+                        </div>
+                        <table class="table">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            <tr  *ngFor="let groupMembers of selectedGroup.members" >
+                                <td>{{groupMembers.name}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <ng-template #elseBlock>Select a group to see details</ng-template>
+                </div>
+            </div>
+
+            <li *ngIf="animal">
+                You chose: <i>{{animal}}</i>
+            </li>
+            <br>
+            <br>
+            <br>
+            <br>
+        </div>
+
+
+
+        <div class="col-3">
+
+        </div>
+    </div>
+</div>
+<div class="footer-um-home">
+    <app-um-footer></app-um-footer>
+</div>

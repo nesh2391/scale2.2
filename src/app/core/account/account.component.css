@@ -1,0 +1,9 @@
+.account-display-padded{
+    padding: 70px;
+}
+.footer-account {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}

@@ -10,17 +10,17 @@ import { ProfileService } from '../auth/logged-in/profile.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TokenResolverService implements Resolve<any>{
+export class TokenResolverService implements Resolve<any> {
 
-  constructor(private cognitoService: CognitoService,private profileService: ProfileService, private location: Location,
-    private router: Router){}
+  constructor(private cognitoService: CognitoService, private profileService: ProfileService, private location: Location,
+    private router: Router) {}
 
 resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> {
-    const urlParams: URLSearchParams = new URLSearchParams(window.location.search)
+    const urlParams: URLSearchParams = new URLSearchParams(window.location.search);
     const code: string = urlParams.get('code');
-    console.log("code received form page",code);
-    if(!code){
-        return of(null)
+    console.log('code received form page', code);
+    if (!code) {
+        return of(null);
     }
     return this.getTokenFromCognito(code).pipe(
         finalize(() => {
@@ -29,13 +29,13 @@ resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<a
     );
 }
 
-getTokenFromCognito(code: string): Observable<any>{
-    console.log("exchanging Code to get token");
+getTokenFromCognito(code: string): Observable<any> {
+    console.log('exchanging Code to get token');
     return this.cognitoService.exchangeCodeWithToken(code).pipe(
         switchMap((response: any) => {
-            console.log("Response :", response)
-            //debugger
-            //localStorage.setItem('token', response.id_token);
+            console.log('Response :', response);
+            // debugger
+            // localStorage.setItem('token', response.id_token);
             // this.cognitoService.exchangeTokenToGetUserName(response.id_token).pipe(
             //     tap(x => {
             //     localStorage.setItem('name', x);
@@ -43,12 +43,12 @@ getTokenFromCognito(code: string): Observable<any>{
             //    }
             // ));
             this.profileService.updateProfile(response.id_token);
-            if(response){
-                this.router.navigate(["server-select"])
+            if (response) {
+                this.router.navigate(['server-select']);
             }
-            return of(response)
+            return of(response);
         })
-    )
+    );
 
     // this.cognitoService.exchangeCodeWithToken(code)
 }

@@ -9,44 +9,51 @@ import { ProfileObject } from './profile-object';
   providedIn: 'root'
 })
 export class ProfileService {
-   po=new ProfileObject();
+   po = new ProfileObject();
    subject = new BehaviorSubject(undefined);
   constructor(private cognitoService: CognitoService) { }
 
-  updateProfile(token:string){
-    
-    
-    this.po.token=token;
-    //Persist the token
+  updateProfile(token: string) {
+
+
+    this.po.token = token;
+    // Persist the token
     localStorage.setItem('token', token);
-    //Decode the token
+    // Decode the token
     this.cognitoService.exchangeTokenToGetUserName(token).pipe(
       tap(x => {
-        this.po.name=x["name"];
-        this.po.email=x["email"];
-        this.po.id=x["id"];
-      localStorage.setItem('user-id', x["id"]);
-      console.log("Call complete ,",x)
+        this.po.name = x['name'];
+        this.po.email = x['email'];
+        this.po.id = x['id'];
+        this.po.dp = x['base64Dp'];
+      localStorage.setItem('user-id', x['id']);
+      console.log('Call complete ,', x);
+          this.subject.next(this.po);
      }
   )).subscribe();
-     this.subject.next(this.po);
+
 
   }
-  destroyProfile(){
+  destroyProfile() {
     localStorage.setItem('token', null);
   }
-  getProfileSubject():Observable<any>{
+  getProfileSubject(): Observable<any> {
     return this.subject.asObservable();
   }
-
-  getToken(){
+  setServerRelation(userEnvironmentRelation: any) {
+      this.po.userServerRelation = userEnvironmentRelation;
+  }
+    getServerRelation() {
+        return this.po.userServerRelation;
+    }
+  getToken() {
     return localStorage.getItem('token');
   }
-  setServer(server:string){
-    this.po.server=server;
+  setServer(server: any ) {
+    this.po.server = server;
     this.subject.next(this.po);
   }
-  getServer():string{
+  getServer(): string {
     return this.po.server;
   }
 }

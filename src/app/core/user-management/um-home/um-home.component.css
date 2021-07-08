@@ -1,0 +1,55 @@
+server-users-list{
+    height: 250px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+}
+.float-child.green {
+    margin-right: 20px;
+}
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+
+}
+.um-home-solid-black-border-and-padding-shadow{
+    border: 1px solid black;
+    padding: 20px;
+    height: 300px;
+    box-shadow: 10px 10px 5px grey;
+    overflow-y: scroll;
+}
+
+.flex-child:first-child {
+    margin-right: 20px;
+}
+.width-100{
+    width:100%;
+}
+.center-image-plexi-card{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+.footer-um-home {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+@media (max-width: 800px) {
+    .flex-container {
+        flex-direction: column;
+    }
+    .server-users-list{
+        height: 100px;
+        overflow-x: scroll;
+        overflow-y: scroll;
+    }
+    .invited-users-list{
+        overflow-x: scroll;
+        overflow-y: scroll;
+    }
+}

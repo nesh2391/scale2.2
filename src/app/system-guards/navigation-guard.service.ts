@@ -5,27 +5,27 @@ import { ProfileService } from '../auth/logged-in/profile.service';
 @Injectable({
   providedIn: 'root'
 })
-export class NavigationGuardService implements CanActivate{
+export class NavigationGuardService implements CanActivate {
 
-  constructor(private router: Router,private profileService: ProfileService) { }
+  constructor(private router: Router, private profileService: ProfileService) { }
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    debugger
-    let token=this.profileService.getToken();
-    let curentUrl=state.url;
-    //user has logged in, now check if they selected a server
-    if(this.profileService.getToken()){
-      //If the server is selected return true
-      if(this.profileService.getServer()){
+    //debugger;
+    const token = this.profileService.getToken();
+    const curentUrl = state.url;
+    // user has logged in, now check if they selected a server
+    if (this.profileService.getToken()) {
+      // If the server is selected return true
+      if (this.profileService.getServer()) {
+        return true;
+        // tslint:disable-next-line:triple-equals
+      } else if (curentUrl == '/server-select' || curentUrl == '/account') {
         return true;
       }
-      //if server is not selected and the accessign url is not /server-select redirect to home
-      else if (curentUrl=="/server-select"){
-        return true;
-      }
+      // If none of the above conditions are met navigate to server select
       this.router.navigate(['/server-select']);
       return true;
-    }
-    else {
+    } else {
+      // This can happen if the user is trying to reach a page directly, navigate to home
       this.router.navigate(['/home']);
       return false;
     }

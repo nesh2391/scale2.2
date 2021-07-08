@@ -1,0 +1,70 @@
+<div class="account-display-padded">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+                <h4>Your Profile:</h4>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div *ngIf="(dp && dp !== '') else alternateCondition">
+                            <img width="180" height="180"  [src]="dp" />
+                        </div>
+                        <ng-template #alternateCondition>No Image found for you!!</ng-template>
+                    </div>
+                    <div class="col-sm-8">
+                        Name: {{name}} <br>
+                        Email: {{email}}<br>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-3">
+
+            </div>
+        </div>
+
+
+
+        <div class="row">
+            <div class="col-3">
+
+            </div>
+            <div class="col-6">
+                <hr>
+                <h4>Upload a new Image</h4>
+            <div class="row">
+
+
+                <div class="col-sm-4">
+                    <!-- Image Preview -->
+                    <p>Image Preview</p>
+                    <div class="imagePreview" *ngIf="avatar && avatar !== ''">
+                        <img [src]="avatar" width="50" height="50" [alt]="uploadForm.value.name" />
+                    </div>
+
+                </div>
+                <div class="col-sm-8">
+                    <form [formGroup]="uploadForm" >
+                        <!-- Select File -->
+                        <input type="file" accept="image/*" (change)="showPreview($event)" class="btn btn-primary" /><br>
+                        <div *ngIf="invalidImageMessage"><br>{{invalidImageMessage}}<br></div><br>
+                        <!-- Submit button -->
+                        <button type="submit" (click)="submitImage()" [disabled]="!validImage" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+
+            </div>
+                </div>
+            <div class="col-3">
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div class="footer-account">
+    <app-footer></app-footer>
+</div>

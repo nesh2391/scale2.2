@@ -1,0 +1,57 @@
+<script src="focus-group-popup.component.ts"></script>
+<h4 mat-dialog-title>Focus Group: </h4>
+<div *ngIf="!focusGroupMetadataEditMode">Focus Group name: {{data.group.name}} <br> Focus group Descrption : {{data.group.description}}<br><button style ="padding: 0;border: none;background: none" *ngIf="!focusGroupMetadataEditMode" (click)="focusGroupMetadataEditMode=true">Edit name and description? <i class="fas fa-edit"></i></button><br></div>
+<div *ngIf="focusGroupMetadataEditMode">
+<form [formGroup]="modifyFocusGroup">
+    <div class="row">
+        <div class="col">
+            <input formControlName="focusGroupName" type="text" class="form-control" placeholder="First name">
+        </div>
+        <div class="col">
+            <input formControlName="focusGroupDescription" type="text" class="form-control" placeholder="Last name">
+        </div>
+    </div>
+    <button type="submit" (click)="updateFocusGroupMetadata()" [disabled]="!modifyFocusGroup.valid" class="btn btn-primary">Save Edits</button>
+</form>
+</div>
+<hr>
+<form>
+    <div class="row">
+        <div class="col-auto">
+            <input formControlName="searchBoxForUsers" type="text" class="form-control" placeholder="Search For user">
+        </div>
+        <div class="col-auto">
+            <button type="submit" (click)="searchForUserEntered()" [disabled]="!modifyFocusGroup.valid" class="btn btn-primary">Save Edits</button>
+        </div>
+    </div>
+</form>
+Search Results
+<div class="focus-group-popup-solid-black-border-and-padding-shadow">
+
+    <ul class="list-group">
+        <li class="list-group-item">Cras justo odio <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Dapibus ac facilisis in <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Morbi leo risus <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Porta ac consectetur ac <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Vestibulum at eros <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Cras justo odio <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Dapibus ac facilisis in <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Morbi leo risus <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Porta ac consectetur ac <i style="float: right" class="fas fa-arrow-right"></i></li>
+        <li class="list-group-item">Vestibulum at eros <i style="float: right" class="fas fa-arrow-right"></i></li>
+    </ul>
+</div>
+Group Members
+<ul class="list-group">
+    <li class="list-group-item">Cras justo odio <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Dapibus ac facilisis in <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Morbi leo risus <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Porta ac consectetur ac <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Vestibulum at eros <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Cras justo odio <i style="float: right" class="fas fa-times"></i></li>
+    <li class="list-group-item">Dapibus ac facilisis in <i style="float: right" class="fas fa-times"></i></li>
+</ul>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+</div>

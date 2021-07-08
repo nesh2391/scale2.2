@@ -1,0 +1,43 @@
+panel1-header {
+    text-align: center;
+    padding: 50px 0;
+    background: #075e54;
+}
+
+
+.panel1-slanted-div {
+    position: relative;
+    padding: 130px 0;
+    background: #128c7e;
+    /* background: snow; */
+    overflow: visible;
+    z-index: 1;
+}
+
+/* where the magic happens */
+.panel1-slanted-div:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: inherit;
+    z-index: -1;
+    bottom: 0;
+    transform-origin: left bottom;
+    transform: skewY(5deg);
+}
+
+/* displays the content inside, as these settings in the parent breaks the effect */
+.panel1-slanted-div div {
+    text-align: right;
+    font-size: 1.5em;
+    line-height: 1.5;
+    margin-right: 30px;
+}
+
+.panel1-footer {
+    color: #999;
+    text-align: center;
+    padding: 150px 50px 50px 50px;
+    background: #222;
+}
