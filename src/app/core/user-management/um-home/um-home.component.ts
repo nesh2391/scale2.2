@@ -13,7 +13,9 @@ import {FocusGroupPopupComponent} from '../focus-group-popup/focus-group-popup.c
 })
 export class UmHomeComponent implements OnInit {
 
-  constructor(public dialog: MatDialog, private toastr: ToastrService, private userAndEnvironmentService: UserAndEnvironmentService, private profileService: ProfileService, private fb: FormBuilder) { }
+  constructor(public dialog: MatDialog, private toastr: ToastrService,
+              private userAndEnvironmentService: UserAndEnvironmentService,
+              private profileService: ProfileService, private fb: FormBuilder) { }
   animal: any;
   name: string;
   public selectedProfile: any;
@@ -31,6 +33,16 @@ export class UmHomeComponent implements OnInit {
   public SearchFunctionInputBinding;
   public pageEventUsersPerServer: void;
   public searchableParamForUserSearch;
+  /**
+   * Focus Group Search
+   */
+  public focusGroupSearchParam = '';
+  public focusGroupSearchListOfServers: any;
+  public focusGroupSearchAveragePageSize = 5;
+  public focusGroupSearchTotalNumberOrRecords = 0;
+  public focusGroupSearchCurrentPage = 0;
+  public focusGroupSearchPageEvent: any;
+
   public inviteFormEmailinvite = this.fb.group(
       {emailOrInvited: ['', Validators.required]}
   );
@@ -59,6 +71,7 @@ export class UmHomeComponent implements OnInit {
     this.getUserEnvironmentRelation();
     const env = this.server['envId'];
     if (env) {
+      this.focusGroupSearchSetSearch();
       this.getAllUsersForThisEnvironment(env, 0, this.NumberOfUsersForServerAveragePageSize );
       this.getCountOfPendingInvitesForEnvironment(env);
       this.getListOfPendingInvitesForEnvironment(env, this.currentPagePendingInvites, this.pendingInvitesPageSize);
@@ -96,7 +109,7 @@ export class UmHomeComponent implements OnInit {
   }
 
   handlePageUsersPerServer(event: any) {
-    if(this.searchableParamForUserSearch) {
+    if ( this.searchableParamForUserSearch ) {
       console.log(' Page ', event.pageIndex);
       this.NumberOfUsersForServerCurrentPage = event.pageIndex;
       this.parameterUserSearch(
@@ -188,6 +201,52 @@ export class UmHomeComponent implements OnInit {
 
   callUserSearchLogic() {
 
+  }
+
+  /**
+   *
+    focusGroupSearchParam = ''
+    focusGroupSearchListOfServers: any;
+    focusGroupSearchAveragePageSize = 5;
+    focusGroupSearchTotalNumberOrRecords = 0;
+    focusGroupSearchCurrentPage = 0;
+    focusGroupSearchPageEvent: any;
+   */
+
+  focusGroupSearchClearSearch() {
+    this.focusGroupSearchParam = '';
+  }
+
+  focusGroupSearchSetSearch() {
+    this.focusGroupSearchCurrentPage = 0;
+    if ( this.profileService.getServer()['envId'] ) {
+      this.focusGroupSearchApiServiceInterface(
+          this.profileService.getServer()['envId'], this.focusGroupSearchCurrentPage,
+          this.focusGroupSearchAveragePageSize,
+          this.focusGroupSearchParam);
+    }
+  }
+  focusGroupSearchPageEventCallback(event: any) {
+    console.log('current page ', event.pageIndex);
+    this.focusGroupSearchCurrentPage = event.pageIndex;
+    if ( this.profileService.getServer()['envId'] ) {
+      this.focusGroupSearchApiServiceInterface(
+          this.profileService.getServer()['envId'], this.focusGroupSearchCurrentPage,
+          this.focusGroupSearchAveragePageSize,
+          this.focusGroupSearchParam);
+    }
+  }
+
+  private focusGroupSearchApiServiceInterface(environmentId: any,
+                                              focusGroupSearchCurrentPage: number, focusGroupSearchAveragePageSize: number,
+                                              focusGroupSearchParam: string) {
+    console.log(focusGroupSearchParam);
+    this.userAndEnvironmentService.invokeApiSearchForFocusGroup(environmentId,
+        focusGroupSearchCurrentPage, focusGroupSearchAveragePageSize,
+        focusGroupSearchParam ).subscribe(x => {
+      this.focusGroupSearchListOfServers = x['content'];
+      this.focusGroupSearchTotalNumberOrRecords = x['totalElements'];
+    });
   }
 
   addMember() {

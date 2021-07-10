@@ -169,46 +169,78 @@
             <br>
             <br>
             <h4>Focus Groups (Manage Existing Focus Groups):</h4>
-            <div class="flex-container">
-                <div class="flex-child server-users-list">
-                    <table class="table">
-                        <thead>
-                        </thead>
-                        <tbody>
-                        <tr  *ngFor="let group of groups" (click)="groupSelected(group)">
-                            <td>{{group.name}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="flex-child um-home-solid-black-border-and-padding-shadow ">
-                    <div *ngIf="selectedGroup else elseBlock" class="server-users-list">
+<!--            <div class="flex-container">-->
+<!--                <div class="flex-child server-users-list">-->
+<!--                    <table class="table">-->
+<!--                        <thead>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr  *ngFor="let group of groups" (click)="groupSelected(group)">-->
+<!--                            <td>{{group.name}}</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                </div>-->
+<!--                <div class="flex-child um-home-solid-black-border-and-padding-shadow ">-->
+<!--                    <div *ngIf="selectedGroup else elseBlock" class="server-users-list">-->
 
-                        <b>Group Id:</b> {{selectedGroup.id}}<br>
-                        <b>Name:</b>{{selectedGroup.name}}<br>
-                        <b>Description :</b> {{selectedGroup.description}}<br><br>
-                        <p>Add Memebers to Group: </p><br>
-                        <div class="flex-container">
-                            <div class="flex-child">
-                                <input type="email" class="width-100">
-                            </div>
-                            <div class="flex-child">
-                                <button (click)="addMember()">Send Invite</button>
-                            </div>
-                        </div>
-                        <table class="table">
-                            <thead>
-                            </thead>
-                            <tbody>
-                            <tr  *ngFor="let groupMembers of selectedGroup.members" >
-                                <td>{{groupMembers.name}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <ng-template #elseBlock>Select a group to see details</ng-template>
+<!--                        <b>Group Id:</b> {{selectedGroup.id}}<br>-->
+<!--                        <b>Name:</b>{{selectedGroup.name}}<br>-->
+<!--                        <b>Description :</b> {{selectedGroup.description}}<br><br>-->
+<!--                        <p>Add Memebers to Group: </p><br>-->
+<!--                        <div class="flex-container">-->
+<!--                            <div class="flex-child">-->
+<!--                                <input type="email" class="width-100">-->
+<!--                            </div>-->
+<!--                            <div class="flex-child">-->
+<!--                                <button (click)="addMember()">Send Invite</button>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <table class="table">-->
+<!--                            <thead>-->
+<!--                            </thead>-->
+<!--                            <tbody>-->
+<!--                            <tr  *ngFor="let groupMembers of selectedGroup.members" >-->
+<!--                                <td>{{groupMembers.name}}</td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                    <ng-template #elseBlock>Select a group to see details</ng-template>-->
+<!--                </div>-->
+<!--            </div>-->
+            Search for a Focus Group/ Team:
+            <div class="input-group mb-3">
+                <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter Data To Search"
+                        aria-label="Recipient's username"
+                        aria-describedby="basic-addon2"
+                        [(ngModel)]="focusGroupSearchParam"
+                />
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" *ngIf="focusGroupSearchParam" (click)="focusGroupSearchClearSearch()" type="button">X</button>
+                    <button class="btn btn-outline-secondary" (click)="focusGroupSearchSetSearch()" type="button">Search</button>
                 </div>
             </div>
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Focus Group/Team Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr  *ngFor="let rec of focusGroupSearchListOfServers" >
+                    <td (click)="groupSelected(rec)">{{rec.name}}</td>
+                </tr>
+                </tbody>
+            </table>
+
+            <mat-paginator  #paginator [pageSize]="focusGroupSearchAveragePageSize"   [length]="focusGroupSearchTotalNumberOrRecords"
+                            [pageIndex]="focusGroupSearchCurrentPage" (page)="focusGroupSearchPageEvent = focusGroupSearchPageEventCallback($event)">
+            </mat-paginator>
 
             <li *ngIf="animal">
                 You chose: <i>{{animal}}</i>

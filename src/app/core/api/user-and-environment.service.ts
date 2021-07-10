@@ -21,6 +21,8 @@ export class UserAndEnvironmentService {
   readonly apiLocationGetCountOfpendinginvitesForServer = '/api/server/count-pending-invites';
   readonly apiLocationCreateFocusGroups = '/api/server/create-focus-group';
   readonly apiLocationSearchForUserBasedOnParam = '/api/users/search-users';
+  readonly apiLocationSearchForUserBasedOnParamForFcsGroup = '/api/users/focus-groups/search-users';
+  readonly apiLocationSearchFocusGroupsForAEnvironment = '/api/server/search-fcs-groups';
 
   constructor(private http: HttpClient) { }
 
@@ -120,4 +122,24 @@ export class UserAndEnvironmentService {
     return this.http.get<any>(environment.monoServerUrl + this.apiLocationSearchForUserBasedOnParam, {params: params});
   }
 
+  invokeApiSearchUserBasedOnParamForFocusGroup(environmentId: string,
+                                               focusGroupId: number, pageNumber: number, pageSize: number, searchparam: string) {
+    let params = new HttpParams();
+    params = params.append( 'env-id', environmentId );
+    params = params.append('pageNumber', String(pageNumber) );
+    params = params.append('pageSize', String(pageSize) );
+    params = params.append('search-p', String(searchparam) );
+    params = params.append('fcs-grp-id', String(focusGroupId) );
+    return this.http.get<any>(environment.monoServerUrl + this.apiLocationSearchForUserBasedOnParamForFcsGroup, {params: params});
+  }
+
+  invokeApiSearchForFocusGroup(environmentId: string,
+                                                pageNumber: number, pageSize: number, searchparam: string) {
+    let params = new HttpParams();
+    params = params.append( 'env-id', environmentId );
+    params = params.append('pageNumber', String(pageNumber) );
+    params = params.append('pageSize', String(pageSize) );
+    params = params.append('search-p', String(searchparam) );
+    return this.http.get<any>(environment.monoServerUrl + this.apiLocationSearchFocusGroupsForAEnvironment, {params: params});
+  }
 }
